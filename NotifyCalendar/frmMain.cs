@@ -32,6 +32,59 @@ namespace NotifyCalendar
         {
             HideForm();
             LoadCalendar();
+            StrartTimer();
+            BackgroundChenger(null, null);
+        }
+
+        private void StrartTimer()
+        {
+            if (Properties.Settings.Default.IsTimerOn)
+            {
+                
+                timer.Interval = GetInterval();
+                timer.Start();
+            }
+            else
+            {
+                timer.Stop();
+            }
+        }
+
+        private static int GetInterval()
+        {
+            var intervalType = Properties.Settings.Default.IntervalType;
+            var interval = Properties.Settings.Default.Interval;
+
+            if (intervalType == 1)
+            {
+                return interval * 60000;
+            }
+            else if (intervalType == 2)
+            {
+                return interval * 3600000;
+            }
+            return 0;
+        }
+
+        private void BackgroundChenger(object sender, EventArgs e)
+        {
+            var gallery = new Gallery();
+            
+            List<string> galleryFiles = gallery.GetGalleryFiles();
+
+            if (gallery.Error != null)
+            {
+                ShowError(message: gallery.Error);
+            }
+
+            gallery.ChangeDesktopBackground(galleryFiles);
+        }
+
+        private void ShowError(string message)
+        {
+            MessageBox.Show(message, @"خطایی رخ داده!", MessageBoxButtons.OK,
+                MessageBoxIcon.Error, MessageBoxDefaultButton.Button1,
+                MessageBoxOptions.RightAlign | MessageBoxOptions.RtlReading);
         }
 
         private void HideForm()
@@ -54,11 +107,9 @@ namespace NotifyCalendar
             }
             else
             {
-                MessageBox.Show(
-                @"لطفا تاریخ سیستم را به میلادی (انگلیسی) تغییر دهید" + Environment.NewLine +
-                "سپس مجددا نرم‌افزار را اجرا کنید",
-                @"", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1,
-                MessageBoxOptions.RightAlign | MessageBoxOptions.RtlReading);
+                var error = "لطفا تاریخ سیستم را به میلادی (انگلیسی) تغییر دهید" + Environment.NewLine +
+                    "سپس مجددا نرم‌افزار را اجرا کنید";
+                ShowError(error);
                 frmMain_Leave(null, null);
             }
         }
@@ -107,6 +158,7 @@ namespace NotifyCalendar
             frmSettings frmSettings = new frmSettings(calendar);
             frmSettings.ShowDialog();
             LoadCalendar();
+            StrartTimer();
             frmSettings.Dispose();
         }
     }

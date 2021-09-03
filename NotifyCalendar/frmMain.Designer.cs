@@ -37,6 +37,7 @@ namespace NotifyCalendar
             this.btnSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.btnExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,6 +87,10 @@ namespace NotifyCalendar
             this.btnExit.Text = "خروج";
             this.btnExit.Click += new System.EventHandler(this.frmMain_Leave);
             // 
+            // timer
+            // 
+            this.timer.Tick += new System.EventHandler(this.BackgroundChenger);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -109,6 +114,7 @@ namespace NotifyCalendar
         private System.Windows.Forms.ToolStripMenuItem btnSettings;
         private System.Windows.Forms.ToolStripMenuItem btnAbout;
         private System.Windows.Forms.ToolStripMenuItem btnExit;
+        private System.Windows.Forms.Timer timer;
     }
 }
 

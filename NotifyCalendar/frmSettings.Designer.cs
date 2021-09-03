@@ -29,6 +29,7 @@ namespace NotifyCalendar
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSettings));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabCalendar = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -39,6 +40,8 @@ namespace NotifyCalendar
             this.cmbHijriAdjustment = new System.Windows.Forms.ComboBox();
             this.tabDesktop = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cmbIntervalType = new System.Windows.Forms.ComboBox();
+            this.numInterval = new System.Windows.Forms.NumericUpDown();
             this.chkIsTimerOn = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnBrowse = new System.Windows.Forms.Button();
@@ -50,18 +53,16 @@ namespace NotifyCalendar
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.folder = new System.Windows.Forms.FolderBrowserDialog();
-            this.numInterval = new System.Windows.Forms.NumericUpDown();
-            this.cmbIntervalType = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabCalendar.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabDesktop.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numInterval)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numInterval)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -188,6 +189,36 @@ namespace NotifyCalendar
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "تغییر اوتومات تصاویر";
             // 
+            // cmbIntervalType
+            // 
+            this.cmbIntervalType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbIntervalType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbIntervalType.FormattingEnabled = true;
+            this.cmbIntervalType.Items.AddRange(new object[] {
+            "دقیقه",
+            "ساعت"});
+            this.cmbIntervalType.Location = new System.Drawing.Point(225, 22);
+            this.cmbIntervalType.Name = "cmbIntervalType";
+            this.cmbIntervalType.Size = new System.Drawing.Size(57, 21);
+            this.cmbIntervalType.TabIndex = 2;
+            // 
+            // numInterval
+            // 
+            this.numInterval.Location = new System.Drawing.Point(288, 23);
+            this.numInterval.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.numInterval.Name = "numInterval";
+            this.numInterval.Size = new System.Drawing.Size(54, 21);
+            this.numInterval.TabIndex = 1;
+            this.numInterval.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // chkIsTimerOn
             // 
             this.chkIsTimerOn.AutoSize = true;
@@ -310,36 +341,6 @@ namespace NotifyCalendar
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // numInterval
-            // 
-            this.numInterval.Location = new System.Drawing.Point(288, 23);
-            this.numInterval.Maximum = new decimal(new int[] {
-            60,
-            0,
-            0,
-            0});
-            this.numInterval.Name = "numInterval";
-            this.numInterval.Size = new System.Drawing.Size(54, 21);
-            this.numInterval.TabIndex = 1;
-            this.numInterval.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // cmbIntervalType
-            // 
-            this.cmbIntervalType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbIntervalType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbIntervalType.FormattingEnabled = true;
-            this.cmbIntervalType.Items.AddRange(new object[] {
-            "دقیقه",
-            "ساعت"});
-            this.cmbIntervalType.Location = new System.Drawing.Point(225, 22);
-            this.cmbIntervalType.Name = "cmbIntervalType";
-            this.cmbIntervalType.Size = new System.Drawing.Size(57, 21);
-            this.cmbIntervalType.TabIndex = 2;
-            // 
             // frmSettings
             // 
             this.AcceptButton = this.btnSave;
@@ -349,6 +350,7 @@ namespace NotifyCalendar
             this.ClientSize = new System.Drawing.Size(485, 282);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmSettings";
@@ -365,11 +367,11 @@ namespace NotifyCalendar
             this.tabDesktop.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numInterval)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numInterval)).EndInit();
             this.ResumeLayout(false);
 
         }
