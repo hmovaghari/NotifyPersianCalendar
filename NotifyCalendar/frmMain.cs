@@ -156,7 +156,9 @@ namespace NotifyCalendar
         {
             calendar.DateTime = DateTime.Now;
             frmSettings frmSettings = new frmSettings(calendar);
+            notify.ContextMenuStrip.Enabled = false;
             frmSettings.ShowDialog();
+            notify.ContextMenuStrip.Enabled = true;
             LoadCalendar();
             StrartTimer();
             frmSettings.Dispose();
