@@ -15,6 +15,7 @@ namespace NotifyCalendar
     public partial class frmMain : Form
     {
         Calendar calendar = new Calendar();
+        private static Properties.Settings defaultSettings = Properties.Settings.Default;
 
         public frmMain()
         {
@@ -38,7 +39,7 @@ namespace NotifyCalendar
 
         private void StrartTimer()
         {
-            if (Properties.Settings.Default.IsTimerOn)
+            if (defaultSettings.IsTimerOn)
             {
                 
                 timer.Interval = GetInterval();
@@ -52,8 +53,8 @@ namespace NotifyCalendar
 
         private static int GetInterval()
         {
-            var intervalType = Properties.Settings.Default.IntervalType;
-            var interval = Properties.Settings.Default.Interval;
+            var intervalType = defaultSettings.IntervalType;
+            var interval = defaultSettings.Interval;
 
             if (intervalType == 1)
             {
@@ -117,12 +118,12 @@ namespace NotifyCalendar
         private void GetDate()
         {
             calendar.DateTime = DateTime.Now;
-            calendar.HijriAdjustment = Properties.Settings.Default.HijriAdjustment;
+            calendar.HijriAdjustment = defaultSettings.HijriAdjustment;
         }
 
         private void ChangeTextOfNotifity()
         {
-            var calendarType = Properties.Settings.Default.CalendarType;
+            var calendarType = defaultSettings.CalendarType;
             var text = CalendarFanctions.GetCalendar(calendar, calendarType);
             
             if (text.ToString().Length >= 128)
