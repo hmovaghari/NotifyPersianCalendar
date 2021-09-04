@@ -77,8 +77,8 @@ namespace NotifyCalendar
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabCalendar);
             this.tabControl1.Controls.Add(this.tabDesktop);
+            this.tabControl1.Controls.Add(this.tabCalendar);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(3, 3);
             this.tabControl1.Name = "tabControl1";
