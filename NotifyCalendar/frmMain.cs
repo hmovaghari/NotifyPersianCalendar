@@ -34,7 +34,6 @@ namespace NotifyCalendar
             HideForm();
             LoadCalendar();
             StrartTimer();
-            BackgroundChenger(null, null);
         }
 
         private void StrartTimer()
@@ -44,6 +43,7 @@ namespace NotifyCalendar
                 
                 timer.Interval = GetInterval();
                 timer.Start();
+                BackgroundChenger(null, null);
             }
             else
             {
