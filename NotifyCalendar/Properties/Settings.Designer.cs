@@ -106,5 +106,53 @@ namespace NotifyCalendar.Properties {
                 this["IntervalType"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool IsShowPersianCalendar {
+            get {
+                return ((bool)(this["IsShowPersianCalendar"]));
+            }
+            set {
+                this["IsShowPersianCalendar"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool IsShowHijriCalendar {
+            get {
+                return ((bool)(this["IsShowHijriCalendar"]));
+            }
+            set {
+                this["IsShowHijriCalendar"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool IsShowGregorianCalendar {
+            get {
+                return ((bool)(this["IsShowGregorianCalendar"]));
+            }
+            set {
+                this["IsShowGregorianCalendar"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public byte BackgroundLocation {
+            get {
+                return ((byte)(this["BackgroundLocation"]));
+            }
+            set {
+                this["BackgroundLocation"] = value;
+            }
+        }
     }
 }

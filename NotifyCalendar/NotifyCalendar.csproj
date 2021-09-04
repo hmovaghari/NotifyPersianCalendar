@@ -230,5 +230,32 @@
   <ItemGroup>
     <None Include="Resources\FantasyLandscape.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Desktop1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Desktop2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Desktop3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Desktop4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Desktop5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Desktop6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Desktop7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Desktop8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Desktop0.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

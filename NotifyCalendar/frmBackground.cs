@@ -18,6 +18,8 @@ namespace NotifyCalendar
     {
         static frmBackground sForm;
 
+        private static Properties.Settings defaultSettings = Properties.Settings.Default;
+
         private frmBackground(string imagePath)
         {
             InitializeComponent();
@@ -61,16 +63,82 @@ namespace NotifyCalendar
 
         private void AddCalendar()
         {
-            var now = DateTime.Now;
-            var hijriAdjustment = Properties.Settings.Default.HijriAdjustment;
-            pictureBox1.Image = GenerateUICalendar(CalendarType.PersianCalendar, now);
-            pictureBox2.Image = GenerateUICalendar(CalendarType.HijriCalendar, now, hijriAdjustment);
-            pictureBox3.Image = GenerateUICalendar(CalendarType.GregorianCalendar, now);
+            ClearAllpictureBoxes();
+
+            var pictureBoxes = GetPictureBoxesByBackgroundLocation(defaultSettings.BackgroundLocation);
+
+            if (pictureBoxes.Count > 0)
+            {
+                var now = DateTime.Now;
+                var hijriAdjustment = Properties.Settings.Default.HijriAdjustment;
+
+                var index = -1;
+
+                if (defaultSettings.IsShowPersianCalendar)
+                {
+                    index = SetImageForPictureBox(pictureBoxes, now, index, CalendarType.PersianCalendar);
+                }
+
+                if (defaultSettings.IsShowHijriCalendar)
+                {
+                    index = SetImageForPictureBox(pictureBoxes, now, index, CalendarType.HijriCalendar);
+                }
+
+                if (defaultSettings.IsShowGregorianCalendar)
+                {
+                    index = SetImageForPictureBox(pictureBoxes, now, index, CalendarType.GregorianCalendar);
+                }
+            }
+        }
+
+        private int SetImageForPictureBox(List<PictureBox> pictureBoxes, DateTime dateTime, int index, CalendarType calendarType)
+        {
+            ++index;
+            pictureBoxes[index].Image = GenerateUICalendar(calendarType, dateTime);
+            pictureBoxes[index].Visible = true;
+            return index;
+        }
+
+        private List<PictureBox> GetPictureBoxesByBackgroundLocation(byte backgroundLocation)
+        {
+            switch (backgroundLocation)
+            {
+                case 1:
+                    return new List<PictureBox> { pictureBox1, pictureBox2, pictureBox3 };
+                case 2:
+                    return new List<PictureBox> { pictureBox1, pictureBox13, pictureBox14 };
+                case 3:
+                    return new List<PictureBox> { pictureBox4, pictureBox5, pictureBox6 };
+                case 4:
+                    return new List<PictureBox> { pictureBox4, pictureBox17, pictureBox18 };
+                case 5:
+                    return new List<PictureBox> { pictureBox10, pictureBox11, pictureBox12 };
+                case 6:
+                    return new List<PictureBox> { pictureBox10, pictureBox15, pictureBox16 };
+                case 7:
+                    return new List<PictureBox> { pictureBox7, pictureBox8, pictureBox9 };
+                case 8:
+                    return new List<PictureBox> { pictureBox7, pictureBox19, pictureBox20 };
+                default:
+                    return new List<PictureBox>();
+            }
+        }
+
+        private void ClearAllpictureBoxes()
+        {
+            foreach (var item in pnlBackground.Controls)
+            {
+                var pictureBox = item as PictureBox;
+                if (pictureBox != null)
+                {
+                    pictureBox.Visible = false;
+                    pictureBox.Image = null;
+                }
+            }
         }
 
         private Image GenerateUICalendar(CalendarType calendarType, DateTime nowDateTime, int? hijriAdjustment = null)
         {
-            //Width = 166 Height = 166
             UICalendar uiCalendar = new UICalendar();
             uiCalendar.CalendarType = calendarType;
             uiCalendar.HijriAdjustment = hijriAdjustment;

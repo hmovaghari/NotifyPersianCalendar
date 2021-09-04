@@ -39,6 +39,13 @@ namespace NotifyCalendar
             this.lblHijriAdjustment = new System.Windows.Forms.Label();
             this.cmbHijriAdjustment = new System.Windows.Forms.ComboBox();
             this.tabDesktop = new System.Windows.Forms.TabPage();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.picBackgroundLocation = new System.Windows.Forms.PictureBox();
+            this.cmbBackgroundLocation = new System.Windows.Forms.ComboBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.chkIsShowGregorianCalendar = new System.Windows.Forms.CheckBox();
+            this.chkIsShowHijriCalendar = new System.Windows.Forms.CheckBox();
+            this.chkIsShowPersianCalendar = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cmbIntervalType = new System.Windows.Forms.ComboBox();
             this.numInterval = new System.Windows.Forms.NumericUpDown();
@@ -58,6 +65,9 @@ namespace NotifyCalendar
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabDesktop.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBackgroundLocation)).BeginInit();
+            this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numInterval)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -75,7 +85,7 @@ namespace NotifyCalendar
             this.tabControl1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.tabControl1.RightToLeftLayout = true;
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(479, 216);
+            this.tabControl1.Size = new System.Drawing.Size(479, 412);
             this.tabControl1.TabIndex = 0;
             // 
             // tabCalendar
@@ -85,7 +95,7 @@ namespace NotifyCalendar
             this.tabCalendar.Location = new System.Drawing.Point(4, 22);
             this.tabCalendar.Name = "tabCalendar";
             this.tabCalendar.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCalendar.Size = new System.Drawing.Size(471, 190);
+            this.tabCalendar.Size = new System.Drawing.Size(471, 386);
             this.tabCalendar.TabIndex = 0;
             this.tabCalendar.Text = "تقویم - نوتیفیکیشن";
             this.tabCalendar.UseVisualStyleBackColor = true;
@@ -167,15 +177,105 @@ namespace NotifyCalendar
             // 
             // tabDesktop
             // 
+            this.tabDesktop.Controls.Add(this.groupBox6);
+            this.tabDesktop.Controls.Add(this.groupBox5);
             this.tabDesktop.Controls.Add(this.groupBox4);
             this.tabDesktop.Controls.Add(this.groupBox3);
             this.tabDesktop.Location = new System.Drawing.Point(4, 22);
             this.tabDesktop.Name = "tabDesktop";
             this.tabDesktop.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDesktop.Size = new System.Drawing.Size(471, 190);
+            this.tabDesktop.Size = new System.Drawing.Size(471, 386);
             this.tabDesktop.TabIndex = 1;
             this.tabDesktop.Text = "تقویم - دسکتاپ";
             this.tabDesktop.UseVisualStyleBackColor = true;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.picBackgroundLocation);
+            this.groupBox6.Controls.Add(this.cmbBackgroundLocation);
+            this.groupBox6.Location = new System.Drawing.Point(9, 259);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(451, 107);
+            this.groupBox6.TabIndex = 3;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "محل قرارگیری تقویم";
+            // 
+            // picBackgroundLocation
+            // 
+            this.picBackgroundLocation.Image = global::NotifyCalendar.Properties.Resources.Desktop0;
+            this.picBackgroundLocation.Location = new System.Drawing.Point(18, 20);
+            this.picBackgroundLocation.Name = "picBackgroundLocation";
+            this.picBackgroundLocation.Size = new System.Drawing.Size(92, 61);
+            this.picBackgroundLocation.TabIndex = 4;
+            this.picBackgroundLocation.TabStop = false;
+            // 
+            // cmbBackgroundLocation
+            // 
+            this.cmbBackgroundLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbBackgroundLocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBackgroundLocation.FormattingEnabled = true;
+            this.cmbBackgroundLocation.Items.AddRange(new object[] {
+            "حالت 1",
+            "حالت 2",
+            "حالت 3",
+            "حالت 4",
+            "حالت 5",
+            "حالت 6",
+            "حالت 7",
+            "حالت 8"});
+            this.cmbBackgroundLocation.Location = new System.Drawing.Point(225, 30);
+            this.cmbBackgroundLocation.Name = "cmbBackgroundLocation";
+            this.cmbBackgroundLocation.Size = new System.Drawing.Size(212, 21);
+            this.cmbBackgroundLocation.TabIndex = 3;
+            this.cmbBackgroundLocation.SelectedIndexChanged += new System.EventHandler(this.cmbBackgroundLocation_SelectedIndexChanged);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.chkIsShowGregorianCalendar);
+            this.groupBox5.Controls.Add(this.chkIsShowHijriCalendar);
+            this.groupBox5.Controls.Add(this.chkIsShowPersianCalendar);
+            this.groupBox5.Location = new System.Drawing.Point(9, 180);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(451, 73);
+            this.groupBox5.TabIndex = 2;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "نمایش تقویم";
+            // 
+            // chkIsShowGregorianCalendar
+            // 
+            this.chkIsShowGregorianCalendar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkIsShowGregorianCalendar.AutoSize = true;
+            this.chkIsShowGregorianCalendar.Location = new System.Drawing.Point(36, 30);
+            this.chkIsShowGregorianCalendar.Name = "chkIsShowGregorianCalendar";
+            this.chkIsShowGregorianCalendar.Size = new System.Drawing.Size(59, 17);
+            this.chkIsShowGregorianCalendar.TabIndex = 5;
+            this.chkIsShowGregorianCalendar.Text = "میلادی";
+            this.chkIsShowGregorianCalendar.UseVisualStyleBackColor = true;
+            this.chkIsShowGregorianCalendar.CheckedChanged += new System.EventHandler(this.ShowCalendar_CheckedChanged);
+            // 
+            // chkIsShowHijriCalendar
+            // 
+            this.chkIsShowHijriCalendar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkIsShowHijriCalendar.AutoSize = true;
+            this.chkIsShowHijriCalendar.Location = new System.Drawing.Point(196, 30);
+            this.chkIsShowHijriCalendar.Name = "chkIsShowHijriCalendar";
+            this.chkIsShowHijriCalendar.Size = new System.Drawing.Size(86, 17);
+            this.chkIsShowHijriCalendar.TabIndex = 4;
+            this.chkIsShowHijriCalendar.Text = "هجری قمری";
+            this.chkIsShowHijriCalendar.UseVisualStyleBackColor = true;
+            this.chkIsShowHijriCalendar.CheckedChanged += new System.EventHandler(this.ShowCalendar_CheckedChanged);
+            // 
+            // chkIsShowPersianCalendar
+            // 
+            this.chkIsShowPersianCalendar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkIsShowPersianCalendar.AutoSize = true;
+            this.chkIsShowPersianCalendar.Location = new System.Drawing.Point(337, 30);
+            this.chkIsShowPersianCalendar.Name = "chkIsShowPersianCalendar";
+            this.chkIsShowPersianCalendar.Size = new System.Drawing.Size(100, 17);
+            this.chkIsShowPersianCalendar.TabIndex = 3;
+            this.chkIsShowPersianCalendar.Text = "هجری شمسی";
+            this.chkIsShowPersianCalendar.UseVisualStyleBackColor = true;
+            this.chkIsShowPersianCalendar.CheckedChanged += new System.EventHandler(this.ShowCalendar_CheckedChanged);
             // 
             // groupBox4
             // 
@@ -299,7 +399,7 @@ namespace NotifyCalendar
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(485, 282);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(485, 478);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // panel1
@@ -307,7 +407,7 @@ namespace NotifyCalendar
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 225);
+            this.panel1.Location = new System.Drawing.Point(3, 421);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(479, 54);
             this.panel1.TabIndex = 1;
@@ -347,7 +447,7 @@ namespace NotifyCalendar
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(485, 282);
+            this.ClientSize = new System.Drawing.Size(485, 478);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -365,6 +465,10 @@ namespace NotifyCalendar
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabDesktop.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picBackgroundLocation)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numInterval)).EndInit();
@@ -401,5 +505,12 @@ namespace NotifyCalendar
         private System.Windows.Forms.CheckBox chkIsTimerOn;
         private System.Windows.Forms.NumericUpDown numInterval;
         private System.Windows.Forms.ComboBox cmbIntervalType;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.CheckBox chkIsShowPersianCalendar;
+        private System.Windows.Forms.CheckBox chkIsShowGregorianCalendar;
+        private System.Windows.Forms.CheckBox chkIsShowHijriCalendar;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.PictureBox picBackgroundLocation;
+        private System.Windows.Forms.ComboBox cmbBackgroundLocation;
     }
 }

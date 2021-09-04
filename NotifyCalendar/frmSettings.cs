@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Persian.Calendar.Library;
 using System.IO;
+using NotifyCalendar.Properties;
 
 namespace NotifyCalendar
 {
     public partial class frmSettings : Form
     {
         private Calendar Calendar;
-        private Properties.Settings defaultSettings = Properties.Settings.Default;
+        private Settings defaultSettings = Settings.Default;
 
         public frmSettings(Calendar calendar)
         {
@@ -38,7 +39,12 @@ namespace NotifyCalendar
         private void LoadData()
         {
             cmbHijriAdjustment.SelectedIndex = defaultSettings.HijriAdjustment + 2;
+
             cmbCalendarType.SelectedIndex = defaultSettings.CalendarType - 1;
+
+            chkIsShowPersianCalendar.Checked = defaultSettings.IsShowPersianCalendar;
+            chkIsShowHijriCalendar.Checked = defaultSettings.IsShowHijriCalendar;
+            chkIsShowGregorianCalendar.Checked = defaultSettings.IsShowGregorianCalendar;
             
             chkDefaultPath.Checked = defaultSettings.IsDefaultPth;
             folder.SelectedPath = defaultSettings.Path;
@@ -47,6 +53,9 @@ namespace NotifyCalendar
             chkIsTimerOn.Checked = defaultSettings.IsTimerOn;
             numInterval.Value = defaultSettings.Interval;
             cmbIntervalType.SelectedIndex = defaultSettings.IntervalType - 1;
+
+            cmbBackgroundLocation.SelectedIndex = defaultSettings.BackgroundLocation - 1;
+            cmbBackgroundLocation_SelectedIndexChanged(null, null);
         }
 
         private void cmbCalendarType_SelectedIndexChanged(object sender, EventArgs e)
@@ -124,6 +133,66 @@ namespace NotifyCalendar
             }
         }
 
+        private void ShowCalendar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!IsShowCalendarsChecked())
+            {
+                cmbBackgroundLocation.Enabled = false;
+                cmbBackgroundLocation.SelectedIndex = -1;
+                cmbBackgroundLocation_SelectedIndexChanged(null, null);
+            }
+            else
+            {
+                cmbBackgroundLocation.Enabled = true;
+            }
+        }
+
+        private bool IsShowCalendarsChecked()
+        {
+            return chkIsShowPersianCalendar.Checked ||
+                chkIsShowHijriCalendar.Checked ||
+                chkIsShowGregorianCalendar.Checked;
+        }
+
+        private void cmbBackgroundLocation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (GetBackgroundLocationFromCMB())
+            {
+                case 1:
+                    picBackgroundLocation.Image = Resources.Desktop1;
+                    break;
+                case 2:
+                    picBackgroundLocation.Image = Resources.Desktop2;
+                    break;
+                case 3:
+                    picBackgroundLocation.Image = Resources.Desktop3;
+                    break;
+                case 4:
+                    picBackgroundLocation.Image = Resources.Desktop4;
+                    break;
+                case 5:
+                    picBackgroundLocation.Image = Resources.Desktop5;
+                    break;
+                case 6:
+                    picBackgroundLocation.Image = Resources.Desktop6;
+                    break;
+                case 7:
+                    picBackgroundLocation.Image = Resources.Desktop7;
+                    break;
+                case 8:
+                    picBackgroundLocation.Image = Resources.Desktop8;
+                    break;
+                default:
+                    picBackgroundLocation.Image = Resources.Desktop0;
+                    break;
+            }
+        }
+
+        private byte GetBackgroundLocationFromCMB()
+        {
+            return (byte)(cmbBackgroundLocation.SelectedIndex + 1);
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (ControlData())
@@ -135,6 +204,10 @@ namespace NotifyCalendar
                 defaultSettings.IsTimerOn = GetIsTimerOnFromCHK();
                 defaultSettings.Interval = GetIntervalFromNUM();
                 defaultSettings.IntervalType = GetIntervalTypeFromCMB();
+                defaultSettings.IsShowPersianCalendar = chkIsShowPersianCalendar.Checked;
+                defaultSettings.IsShowHijriCalendar = chkIsShowHijriCalendar.Checked;
+                defaultSettings.IsShowGregorianCalendar = chkIsShowGregorianCalendar.Checked;
+                defaultSettings.BackgroundLocation = GetBackgroundLocationFromCMB();
                 defaultSettings.Save();
                 btnCancel_Click(null, null);
             }
@@ -145,14 +218,20 @@ namespace NotifyCalendar
             var selectedPath = GetSelectedPathFromFolderDialog();
             if (!GetIsDefaultPathFromCHK() && (string.IsNullOrEmpty(selectedPath) || !Directory.Exists(selectedPath)))
             {
-                ShowError(message: "لطفا مسیر آلبوم تصاویر را انتخاب نمائید", caption: "خطا");
+                ShowError(message: "لطفا مسیر آلبوم تصاویر را از تب تقویم - دسکتاپ انتخاب نمائید", caption: "خطا");
                 return false;
             }
 
             
-            if (GetIsTimerOnFromCHK() && (GetIntervalFromNUM() == 0 || GetIntervalTypeFromCMB() == -1))
+            if (GetIsTimerOnFromCHK() && (GetIntervalFromNUM() == 0 || GetIntervalTypeFromCMB() == 0))
             {
-                ShowError(message: "لطفا نحوه‌ی تغییر اوتومات تصاویر را انتخاب نمائید", caption: "خطا");
+                ShowError(message: "لطفا نحوه‌ی تغییر اوتومات تصاویر را از تب تقویم - دسکتاپ انتخاب نمائید", caption: "خطا");
+                return false;
+            }
+
+            if (IsShowCalendarsChecked() && GetBackgroundLocationFromCMB() == 0)
+            {
+                ShowError(message: "لطفا محل قرارگیری تقویم را از تب تقویم - دسکتاپ انتخاب نمائید", caption: "خطا");
                 return false;
             }
 
