@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,38 +15,24 @@ namespace NotifyCalendar
     {
         static frmBackground sForm;
 
-        private frmBackground()
-        {
-
-        }
-
         private frmBackground(string imagePath)
         {
             InitializeComponent();
 
             var image = GetImage(imagePath);
-            
-            SetFormImage(image);
 
-            ChangeFormSize(image.Width, image.Height);
-        }
+            SetPanelImage(image);
 
-        private static new void Show(IWin32Window owner = null)
-        {
-
-        }
-
-        private static new void ShowDialog(IWin32Window owner = null)
-        {
-
+            ChangeSize(image.Width, image.Height);
         }
 
         internal static Image TakeScreenshot(string imagePath)
         {
             sForm = new frmBackground(imagePath);
-            sForm.Activate();
-            Bitmap bitmap = new Bitmap(sForm.Width, sForm.Height);
-            sForm.DrawToBitmap(bitmap, new Rectangle(0, 0, bitmap.Width, bitmap.Height));
+            Bitmap bitmap = new Bitmap(sForm.pnlBackground.Width, sForm.pnlBackground.Height);
+            sForm.Show();
+            sForm.pnlBackground.DrawToBitmap(bitmap, new Rectangle(0, 0, bitmap.Width, bitmap.Height));
+            sForm.Hide();
             return bitmap;
         }
 
@@ -54,15 +41,17 @@ namespace NotifyCalendar
             return Image.FromFile(imagePath);
         }
 
-        private void SetFormImage(Image image)
+        private void SetPanelImage(Image image)
         {
-            BackgroundImage = image;
+            pnlBackground.BackgroundImage = image;
         }
 
-        private void ChangeFormSize(int width, int height)
+        private void ChangeSize(int width, int height)
         {
-            Width = width;
-            Height = height;
+            Width = 0;
+            Height = 0;
+            pnlBackground.Width = width;
+            pnlBackground.Height = height;
         }
     }
 }

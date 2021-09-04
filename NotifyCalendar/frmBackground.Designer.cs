@@ -29,14 +29,23 @@ namespace NotifyCalendar
         /// </summary>
         private void InitializeComponent()
         {
+            this.pnlBackground = new System.Windows.Forms.Panel();
             this.SuspendLayout();
+            // 
+            // pnlBackground
+            // 
+            this.pnlBackground.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlBackground.Location = new System.Drawing.Point(12, 12);
+            this.pnlBackground.Name = "pnlBackground";
+            this.pnlBackground.Size = new System.Drawing.Size(216, 141);
+            this.pnlBackground.TabIndex = 0;
             // 
             // frmBackground
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(242, 174);
+            this.Controls.Add(this.pnlBackground);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmBackground";
@@ -46,5 +55,7 @@ namespace NotifyCalendar
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel pnlBackground;
     }
 }
