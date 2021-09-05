@@ -220,20 +220,20 @@ namespace NotifyCalendar
             var selectedPath = GetSelectedPathFromFolderDialog();
             if (!GetIsDefaultPathFromCHK() && (string.IsNullOrEmpty(selectedPath) || !Directory.Exists(selectedPath)))
             {
-                ShowError(message: "لطفا مسیر آلبوم تصاویر را از تب تقویم - دسکتاپ انتخاب نمائید", caption: "خطا");
+                ShowError(message: "لطفا مسیر آلبوم تصاویر را از تب 'دسکتاپ' انتخاب نمائید", caption: "خطا");
                 return false;
             }
 
             
             if (GetIsTimerOnFromCHK() && (GetIntervalFromNUM() == 0 || GetIntervalTypeFromCMB() == 0))
             {
-                ShowError(message: "لطفا نحوه‌ی تغییر اوتومات تصاویر را از تب تقویم - دسکتاپ انتخاب نمائید", caption: "خطا");
+                ShowError(message: "لطفا نحوه‌ی تغییر اوتومات تصاویر را از تب 'دسکتاپ' انتخاب نمائید", caption: "خطا");
                 return false;
             }
 
             if (IsShowCalendarsChecked() && GetBackgroundLocationFromCMB() == 0)
             {
-                ShowError(message: "لطفا محل قرارگیری تقویم را از تب تقویم - دسکتاپ انتخاب نمائید", caption: "خطا");
+                ShowError(message: "لطفا محل قرارگیری تقویم را از تب 'دسکتاپ' انتخاب نمائید", caption: "خطا");
                 return false;
             }
 

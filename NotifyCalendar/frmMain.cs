@@ -43,12 +43,12 @@ namespace NotifyCalendar
                 
                 timer.Interval = GetInterval();
                 timer.Start();
+                BackgroundChenger(null, null);
             }
             else
             {
                 timer.Stop();
             }
-            BackgroundChenger(null, null);
         }
 
         private static int GetInterval()
