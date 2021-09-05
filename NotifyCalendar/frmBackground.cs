@@ -81,7 +81,7 @@ namespace NotifyCalendar
 
                 if (defaultSettings.IsShowHijriCalendar)
                 {
-                    index = SetImageForPictureBox(pictureBoxes, now, index, CalendarType.HijriCalendar);
+                    index = SetImageForPictureBox(pictureBoxes, now, index, CalendarType.HijriCalendar, hijriAdjustment);
                 }
 
                 if (defaultSettings.IsShowGregorianCalendar)
@@ -91,10 +91,11 @@ namespace NotifyCalendar
             }
         }
 
-        private int SetImageForPictureBox(List<PictureBox> pictureBoxes, DateTime dateTime, int index, CalendarType calendarType)
+        private int SetImageForPictureBox(List<PictureBox> pictureBoxes, DateTime dateTime, int index,
+            CalendarType calendarType, int? hijriAdjustment = null)
         {
             ++index;
-            pictureBoxes[index].Image = GenerateUICalendar(calendarType, dateTime);
+            pictureBoxes[index].Image = GenerateUICalendar(calendarType, dateTime, hijriAdjustment);
             pictureBoxes[index].Visible = true;
             return index;
         }
