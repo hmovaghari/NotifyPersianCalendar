@@ -43,12 +43,12 @@ namespace NotifyCalendar
                 
                 timer.Interval = GetInterval();
                 timer.Start();
-                BackgroundChenger(null, null);
             }
             else
             {
                 timer.Stop();
             }
+            BackgroundChenger(null, null);
         }
 
         private static int GetInterval()
@@ -156,10 +156,13 @@ namespace NotifyCalendar
             calendar.DateTime = DateTime.Now;
             frmSettings frmSettings = new frmSettings(calendar);
             notify.ContextMenuStrip.Enabled = false;
-            frmSettings.ShowDialog();
+            var result = frmSettings.ShowDialog();
             notify.ContextMenuStrip.Enabled = true;
-            LoadCalendar();
-            StrartTimer();
+            if (result == DialogResult.OK)
+            {
+                LoadCalendar();
+                StrartTimer();
+            }
             frmSettings.Dispose();
         }
     }

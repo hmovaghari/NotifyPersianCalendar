@@ -20,7 +20,12 @@ namespace NotifyCalendar
         private void btnRepository_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/hmovaghari?tab=repositories");
-            Close();
+            frmAbount_FormClosed(null, null);
+        }
+
+        private void frmAbount_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Dispose();
         }
     }
 }

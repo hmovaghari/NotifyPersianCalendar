@@ -73,6 +73,7 @@ namespace NotifyCalendar
             this.Name = "frmAbount";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "درباره برنامه نویس";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmAbount_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

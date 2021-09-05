@@ -22,6 +22,7 @@ namespace NotifyCalendar
         {
             InitializeComponent();
             Calendar = calendar;
+            DialogResult = DialogResult.None;
         }
 
         private void frmSettings_Load(object sender, EventArgs e)
@@ -209,6 +210,7 @@ namespace NotifyCalendar
                 defaultSettings.IsShowGregorianCalendar = chkIsShowGregorianCalendar.Checked;
                 defaultSettings.BackgroundLocation = GetBackgroundLocationFromCMB();
                 defaultSettings.Save();
+                DialogResult = DialogResult.OK;
                 btnCancel_Click(null, null);
             }
         }
@@ -246,6 +248,10 @@ namespace NotifyCalendar
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            if (DialogResult == DialogResult.None)
+            {
+                DialogResult = DialogResult.Cancel;
+            }
             this.Close();
         }
     }
