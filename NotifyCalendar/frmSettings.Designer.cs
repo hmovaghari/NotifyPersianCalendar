@@ -60,6 +60,7 @@ namespace NotifyCalendar
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.folder = new System.Windows.Forms.FolderBrowserDialog();
+            this.tabEvents = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabDesktop.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -79,6 +80,7 @@ namespace NotifyCalendar
             // 
             this.tabControl1.Controls.Add(this.tabDesktop);
             this.tabControl1.Controls.Add(this.tabCalendar);
+            this.tabControl1.Controls.Add(this.tabEvents);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(3, 3);
             this.tabControl1.Name = "tabControl1";
@@ -99,7 +101,7 @@ namespace NotifyCalendar
             this.tabDesktop.Padding = new System.Windows.Forms.Padding(3);
             this.tabDesktop.Size = new System.Drawing.Size(471, 386);
             this.tabDesktop.TabIndex = 1;
-            this.tabDesktop.Text = "دسکتاپ";
+            this.tabDesktop.Text = "پس زمینه";
             this.tabDesktop.UseVisualStyleBackColor = true;
             // 
             // groupBox6
@@ -116,7 +118,7 @@ namespace NotifyCalendar
             // picBackgroundLocation
             // 
             this.picBackgroundLocation.Image = global::NotifyCalendar.Properties.Resources.Desktop0;
-            this.picBackgroundLocation.Location = new System.Drawing.Point(18, 20);
+            this.picBackgroundLocation.Location = new System.Drawing.Point(36, 30);
             this.picBackgroundLocation.Name = "picBackgroundLocation";
             this.picBackgroundLocation.Size = new System.Drawing.Size(92, 61);
             this.picBackgroundLocation.TabIndex = 4;
@@ -441,6 +443,15 @@ namespace NotifyCalendar
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // tabEvents
+            // 
+            this.tabEvents.Location = new System.Drawing.Point(4, 22);
+            this.tabEvents.Name = "tabEvents";
+            this.tabEvents.Size = new System.Drawing.Size(471, 386);
+            this.tabEvents.TabIndex = 2;
+            this.tabEvents.Text = "رویدادها";
+            this.tabEvents.UseVisualStyleBackColor = true;
+            // 
             // frmSettings
             // 
             this.AcceptButton = this.btnSave;
@@ -512,5 +523,6 @@ namespace NotifyCalendar
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.PictureBox picBackgroundLocation;
         private System.Windows.Forms.ComboBox cmbBackgroundLocation;
+        private System.Windows.Forms.TabPage tabEvents;
     }
 }

@@ -37,7 +37,10 @@ namespace NotifyCalendar
             this.btnSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.btnExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.تغییرصفحهنمایشToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.تبدیلتاریخToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ایجادرویدادجدیدToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,43 +56,65 @@ namespace NotifyCalendar
             this.menu.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnEvents,
+            this.ایجادرویدادجدیدToolStripMenuItem,
+            this.تغییرصفحهنمایشToolStripMenuItem,
+            this.تبدیلتاریخToolStripMenuItem,
             this.btnSettings,
             this.btnAbout,
             this.btnExit});
             this.menu.Name = "menu";
             this.menu.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.menu.Size = new System.Drawing.Size(130, 92);
+            this.menu.Size = new System.Drawing.Size(160, 158);
             // 
             // btnEvents
             // 
             this.btnEvents.Name = "btnEvents";
-            this.btnEvents.Size = new System.Drawing.Size(129, 22);
+            this.btnEvents.Size = new System.Drawing.Size(159, 22);
             this.btnEvents.Text = "رویداد امروز";
             // 
             // btnSettings
             // 
             this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(129, 22);
+            this.btnSettings.Size = new System.Drawing.Size(159, 22);
             this.btnSettings.Text = "تنظیمات";
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // btnAbout
             // 
             this.btnAbout.Name = "btnAbout";
-            this.btnAbout.Size = new System.Drawing.Size(129, 22);
+            this.btnAbout.Size = new System.Drawing.Size(159, 22);
             this.btnAbout.Text = "درباره";
             this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
             // 
             // btnExit
             // 
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(129, 22);
+            this.btnExit.Size = new System.Drawing.Size(159, 22);
             this.btnExit.Text = "خروج";
             this.btnExit.Click += new System.EventHandler(this.frmMain_Leave);
+            // 
+            // تغییرصفحهنمایشToolStripMenuItem
+            // 
+            this.تغییرصفحهنمایشToolStripMenuItem.Name = "تغییرصفحهنمایشToolStripMenuItem";
+            this.تغییرصفحهنمایشToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.تغییرصفحهنمایشToolStripMenuItem.Text = "تغییر پس زمینه";
+            this.تغییرصفحهنمایشToolStripMenuItem.Click += new System.EventHandler(this.BackgroundChenger);
             // 
             // timer
             // 
             this.timer.Tick += new System.EventHandler(this.BackgroundChenger);
+            // 
+            // تبدیلتاریخToolStripMenuItem
+            // 
+            this.تبدیلتاریخToolStripMenuItem.Name = "تبدیلتاریخToolStripMenuItem";
+            this.تبدیلتاریخToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.تبدیلتاریخToolStripMenuItem.Text = "تبدیل تاریخ";
+            // 
+            // ایجادرویدادجدیدToolStripMenuItem
+            // 
+            this.ایجادرویدادجدیدToolStripMenuItem.Name = "ایجادرویدادجدیدToolStripMenuItem";
+            this.ایجادرویدادجدیدToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.ایجادرویدادجدیدToolStripMenuItem.Text = "ایجاد رویداد جدید";
             // 
             // frmMain
             // 
@@ -115,6 +140,9 @@ namespace NotifyCalendar
         private System.Windows.Forms.ToolStripMenuItem btnAbout;
         private System.Windows.Forms.ToolStripMenuItem btnExit;
         private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.ToolStripMenuItem تغییرصفحهنمایشToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ایجادرویدادجدیدToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem تبدیلتاریخToolStripMenuItem;
     }
 }
 
