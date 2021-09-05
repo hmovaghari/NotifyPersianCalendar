@@ -147,10 +147,8 @@ namespace NotifyCalendar
 
         private void btnAbout_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(
-                @"ساخته شده توسط حامد موقری" + Environment.NewLine + @"آدرس اینترنتی : http://hmovaghari.rozblog.com",
-                @"", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1,
-                MessageBoxOptions.RightAlign | MessageBoxOptions.RtlReading);
+            frmAbount frmAbount = new frmAbount();
+            frmAbount.Show();
         }
 
         private void btnSettings_Click(object sender, EventArgs e)

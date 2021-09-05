@@ -54,6 +54,12 @@
   <ItemGroup>
     <Compile Include="CalendarFanctions.cs" />
     <Compile Include="ChangeBackground.cs" />
+    <Compile Include="frmAbount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAbount.Designer.cs">
+      <DependentUpon>frmAbount.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmBackground.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +81,9 @@
     <Compile Include="Gallery.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAbount.resx">
+      <DependentUpon>frmAbount.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmBackground.resx">
       <DependentUpon>frmBackground.cs</DependentUpon>
     </EmbeddedResource>
@@ -219,18 +228,6 @@
     <None Include="Resources\gratisography-301H.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\peter-oslanec-AsTuH7M7ImY-unsplash.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\460673.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\74499c064e6d1725215720170abf3ad8.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\FantasyLandscape.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Desktop1.png" />
   </ItemGroup>
   <ItemGroup>
@@ -256,6 +253,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Desktop0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\github.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
