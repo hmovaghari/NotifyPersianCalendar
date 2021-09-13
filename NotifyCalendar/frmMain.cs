@@ -149,7 +149,7 @@ namespace NotifyCalendar
 
         private void ChangeTextOfNotifity()
         {
-            var calendarType = defaultSettings.CalendarType;
+            var calendarType = defaultSettings.CalendarShowType;
             var text = CalendarFanctions.GetCalendar(calendar, calendarType);
 
             if (text.ToString().Length >= 128)

@@ -5,7 +5,7 @@
     <Setting Name="HijriAdjustment" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="CalendarType" Type="System.Byte" Scope="User">
+    <Setting Name="CalendarShowType" Type="System.Byte" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="IsDefaultPth" Type="System.Boolean" Scope="User">

@@ -41,7 +41,7 @@ namespace NotifyCalendar
         {
             cmbHijriAdjustment.SelectedIndex = defaultSettings.HijriAdjustment + 2;
 
-            cmbCalendarType.SelectedIndex = defaultSettings.CalendarType - 1;
+            cmbCalendarType.SelectedIndex = defaultSettings.CalendarShowType - 1;
 
             chkIsShowPersianCalendar.Checked = defaultSettings.IsShowPersianCalendar;
             chkIsShowHijriCalendar.Checked = defaultSettings.IsShowHijriCalendar;
@@ -199,7 +199,7 @@ namespace NotifyCalendar
             if (ControlData())
             {
                 defaultSettings.HijriAdjustment = GetHijriAdjustmentFromCMB();
-                defaultSettings.CalendarType = GetCalendarTypeFromCMB();
+                defaultSettings.CalendarShowType = GetCalendarTypeFromCMB();
                 defaultSettings.IsDefaultPth = GetIsDefaultPathFromCHK();
                 defaultSettings.Path = GetSelectedPathFromFolderDialog();
                 defaultSettings.IsTimerOn = GetIsTimerOnFromCHK();

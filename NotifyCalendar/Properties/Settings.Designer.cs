@@ -38,12 +38,12 @@ namespace NotifyCalendar.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public byte CalendarType {
+        public byte CalendarShowType {
             get {
-                return ((byte)(this["CalendarType"]));
+                return ((byte)(this["CalendarShowType"]));
             }
             set {
-                this["CalendarType"] = value;
+                this["CalendarShowType"] = value;
             }
         }
         
