@@ -18,6 +18,22 @@ namespace NotifyCalendar
             {
                 components.Dispose();
             }
+            if (background != null)
+            {
+                background.Dispose();
+            }
+            if (CalendarImage1 != null)
+            {
+                CalendarImage1.Dispose();
+            }
+            if (CalendarImage2 != null)
+            {
+                CalendarImage2.Dispose();
+            }
+            if (CalendarImage3 != null)
+            {
+                CalendarImage3.Dispose();
+            }
             base.Dispose(disposing);
         }
 

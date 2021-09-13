@@ -10,9 +10,10 @@ namespace NotifyCalendar
 {
     public class Gallery
     {
-        private static Properties.Settings defaultSettings = Properties.Settings.Default;
+        private Properties.Settings defaultSettings = Properties.Settings.Default;
         private string defaultGallery = $@"{Directory.GetCurrentDirectory()}\Gallery";
         internal string Error = null;
+        internal bool ForceClose = false;
 
         internal List<string> GetGalleryFiles()
         {
@@ -69,7 +70,7 @@ namespace NotifyCalendar
             return galleryFiles;
         }
 
-        private static void ChangeToDefaultPath()
+        private void ChangeToDefaultPath()
         {
             defaultSettings.IsDefaultPth = true;
             defaultSettings.Path = string.Empty;
@@ -85,8 +86,19 @@ namespace NotifyCalendar
         internal void ChangeDesktopBackground(List<string> imagePaths)
         {
             var imagePath = GetRadnomImagePath(imagePaths);
-            var image = frmBackground.TakeScreenshot(imagePath);
-            ChangeBackground.Set(image);
+            var _frmBackground = frmBackground.GenerateForm(imagePath);
+            if (_frmBackground.Error == null)
+            {
+                var image = _frmBackground.TakeScreenshot();
+                ChangeBackground.Set(image);
+                image.Dispose();
+            }
+            else
+            {
+                Error = _frmBackground.Error;
+                ForceClose = _frmBackground.ForseClose;
+            }
+            _frmBackground.Dispose();
         }
 
         private string GetRadnomImagePath(List<string> imagePath)

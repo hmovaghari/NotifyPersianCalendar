@@ -16,6 +16,7 @@ namespace NotifyCalendar
     {
         Calendar calendar = new Calendar();
         private static Properties.Settings defaultSettings = Properties.Settings.Default;
+        private bool isFirstRun = true;
 
         public frmMain()
         {
@@ -43,11 +44,20 @@ namespace NotifyCalendar
                 
                 timer.Interval = GetInterval();
                 timer.Start();
-                BackgroundChenger(null, null);
             }
             else
             {
                 timer.Stop();
+            }
+
+            if (isFirstRun || defaultSettings.IsTimerOn)
+            {
+                BackgroundChenger(null, null);
+
+                if (isFirstRun)
+                {
+                    isFirstRun = false;
+                }
             }
         }
 
@@ -70,15 +80,31 @@ namespace NotifyCalendar
         private void BackgroundChenger(object sender, EventArgs e)
         {
             var gallery = new Gallery();
-            
+
             List<string> galleryFiles = gallery.GetGalleryFiles();
 
+            CheckGalleryError(gallery);
+
+            gallery.ChangeDesktopBackground(galleryFiles);
+
+            CheckGalleryError(gallery);
+        }
+
+        private void CheckGalleryError(Gallery gallery)
+        {
             if (gallery.Error != null)
             {
                 ShowError(message: gallery.Error);
-            }
 
-            gallery.ChangeDesktopBackground(galleryFiles);
+                if (!gallery.ForceClose)
+                {
+                    gallery.Error = null;
+                }
+                else
+                {
+                    frmMain_Leave(null, null);
+                }
+            }
         }
 
         private void ShowError(string message)
@@ -125,7 +151,7 @@ namespace NotifyCalendar
         {
             var calendarType = defaultSettings.CalendarType;
             var text = CalendarFanctions.GetCalendar(calendar, calendarType);
-            
+
             if (text.ToString().Length >= 128)
             {
                 throw new ArgumentOutOfRangeException("Text limited to 127 characters");
