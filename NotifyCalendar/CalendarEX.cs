@@ -8,20 +8,15 @@ using Persian.Calendar.Library;
 
 namespace NotifyCalendar
 {
-    internal class CalendarFanctions
+    internal static class CalendarEX
     {
-        internal static bool IsValidRegion()
-        {
-            return Calendar.IsValidRegion;
-        }
-
-        internal static StringBuilder GetCalendar(Calendar calendar, byte calendarType)
+        internal static string Text(this Calendar calendar, byte calendarShowType)
         {
             var result = new StringBuilder();
-            result.AppendLine(GetPersianDate(calendar, calendarType));
-            result.AppendLine(GetHijriDate(calendar, calendarType));
-            result.AppendLine(GetGregorianDate(calendar, calendarType));
-            return result;
+            result.AppendLine(GetPersianDate(calendar, calendarShowType));
+            result.AppendLine(GetHijriDate(calendar, calendarShowType));
+            result.AppendLine(GetGregorianDate(calendar, calendarShowType));
+            return result.ToString();
         }
 
 
@@ -61,10 +56,10 @@ namespace NotifyCalendar
                 calendar.PersianDay.ToString("00").ToPersianNumber();
         }
 
-        internal static string GetHijriDate(int hijriAdjustment)
+        internal static string GetHijriDate(this Calendar calendar, int hijriAdjustment)
         {
-            var _calendar = new Calendar(DateTime.Now, hijriAdjustment);
-            return GetHijriDate(_calendar, calendarType: 3);
+            calendar.HijriAdjustment = hijriAdjustment;
+            return GetHijriDate(calendar, calendarType: 3);
         }
 
         private static string GetHijriDate(Calendar calendar, byte calendarType)
@@ -133,7 +128,7 @@ namespace NotifyCalendar
                 calendar.GregorianDay.ToString("00").ToPersianNumber();
         }
 
-        internal static Icon GetIcon(Calendar calendar)
+        internal static Icon GetIcon(this Calendar calendar)
         {
             var day = calendar.PersianDay;
             switch (day)

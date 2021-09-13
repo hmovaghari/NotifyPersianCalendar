@@ -14,8 +14,8 @@ namespace NotifyCalendar
 {
     public partial class frmMain : Form
     {
-        Calendar calendar = new Calendar();
-        private static Properties.Settings defaultSettings = Properties.Settings.Default;
+        private Calendar calendar = new Calendar();
+        private Properties.Settings defaultSettings = Properties.Settings.Default;
         private bool isFirstRun = true;
 
         public frmMain()
@@ -61,20 +61,20 @@ namespace NotifyCalendar
             }
         }
 
-        private static int GetInterval()
+        private int GetInterval()
         {
             var intervalType = defaultSettings.IntervalType;
             var interval = defaultSettings.Interval;
 
-            if (intervalType == 1)
+            switch (intervalType)
             {
-                return interval * 60000;
+                case 1:
+                    return interval * 60000;
+                case 2:
+                    return interval * 3600000;
+                default:
+                    return 0;
             }
-            else if (intervalType == 2)
-            {
-                return interval * 3600000;
-            }
-            return 0;
         }
 
         private void BackgroundChenger(object sender, EventArgs e)
@@ -126,7 +126,7 @@ namespace NotifyCalendar
 
         private void LoadCalendar()
         {
-            if (CalendarFanctions.IsValidRegion())
+            if (Calendar.IsValidRegion)
             {
                 GetDate();
                 ChangeTextOfNotifity();
@@ -149,8 +149,8 @@ namespace NotifyCalendar
 
         private void ChangeTextOfNotifity()
         {
-            var calendarType = defaultSettings.CalendarShowType;
-            var text = CalendarFanctions.GetCalendar(calendar, calendarType);
+            var calendarShowType = defaultSettings.CalendarShowType;
+            var text = calendar.Text(calendarShowType);
 
             if (text.ToString().Length >= 128)
             {
@@ -159,7 +159,7 @@ namespace NotifyCalendar
 
             Type t = typeof(NotifyIcon);
             BindingFlags hidden = BindingFlags.NonPublic | BindingFlags.Instance;
-            t.GetField("text", hidden).SetValue(notify, text.ToString());
+            t.GetField("text", hidden).SetValue(notify, text);
             if ((bool)t.GetField("added", hidden).GetValue(notify))
             {
                 t.GetMethod("UpdateIcon", hidden).Invoke(notify, new object[] { true });
@@ -168,7 +168,7 @@ namespace NotifyCalendar
 
         private void ChageIconOfNotifity()
         {
-            notify.Icon = CalendarFanctions.GetIcon(calendar);
+            notify.Icon = calendar.GetIcon();
         }
 
         private void btnAbout_Click(object sender, EventArgs e)

@@ -91,51 +91,31 @@ namespace NotifyCalendar
 
             if (pictureBoxes.Count > 0)
             {
-                var now = DateTime.Now;
+                var nowDateTime = DateTime.Now;
                 var hijriAdjustment = defaultSettings.HijriAdjustment;
 
                 var index = -1;
 
                 if (defaultSettings.IsShowPersianCalendar)
                 {
-                    index = SetImageForPictureBox(out CalendarImage1, pictureBoxes, now, index, CalendarType.PersianCalendar);
+                    index = SetImageForPictureBox(out CalendarImage1, pictureBoxes, nowDateTime, index, CalendarType.PersianCalendar);
                 }
 
                 if (defaultSettings.IsShowHijriCalendar)
                 {
-                    index = SetImageForPictureBox(out CalendarImage2, pictureBoxes, now, index, CalendarType.HijriCalendar,
+                    index = SetImageForPictureBox(out CalendarImage2, pictureBoxes, nowDateTime, index, CalendarType.HijriCalendar,
                         hijriAdjustment);
                 }
 
                 if (defaultSettings.IsShowGregorianCalendar)
                 {
-                    index = SetImageForPictureBox(out CalendarImage3, pictureBoxes, now, index, CalendarType.GregorianCalendar);
+                    index = SetImageForPictureBox(out CalendarImage3, pictureBoxes, nowDateTime, index, CalendarType.GregorianCalendar);
                 }
             }
             else
             {
                 Error = "لطفا تنظیمات نرم‌افزار را بررسی نمائید";
             }
-        }
-
-        private int SetImageForPictureBox(out Image calendarImage, List<PictureBox> pictureBoxes, DateTime dateTime, int index,
-            CalendarType calendarType, int? hijriAdjustment = null)
-        {
-            ++index;
-            string imagePath = $@"{currentDirectory}\Calendar{index}.png";
-            SaveUICalendarScreenShot(imagePath, calendarType, dateTime, hijriAdjustment);
-            calendarImage = GetImage(imagePath);
-            if (calendarImage != null)
-            {
-                pictureBoxes[index].Image = calendarImage;
-                pictureBoxes[index].Visible = true;
-            }
-            else
-            {
-                Error = "در خواندن تقویم مشکلی رخ داده لطفا مجددا نرم‌افزار اجرا کنید";
-                ForseClose = true;
-            }
-            return index;
         }
 
         private List<PictureBox> GetPictureBoxesByBackgroundLocation(byte backgroundLocation)
@@ -161,6 +141,26 @@ namespace NotifyCalendar
                 default:
                     return new List<PictureBox>();
             }
+        }
+
+        private int SetImageForPictureBox(out Image calendarImage, List<PictureBox> pictureBoxes, DateTime nowDateTime, int index,
+            CalendarType calendarType, int? hijriAdjustment = null)
+        {
+            ++index;
+            string imagePath = $@"{currentDirectory}\Calendar{index}.png";
+            SaveUICalendarScreenShot(imagePath, calendarType, nowDateTime, hijriAdjustment);
+            calendarImage = GetImage(imagePath);
+            if (calendarImage != null)
+            {
+                pictureBoxes[index].Image = calendarImage;
+                pictureBoxes[index].Visible = true;
+            }
+            else
+            {
+                Error = "در خواندن تقویم مشکلی رخ داده لطفا مجددا نرم‌افزار اجرا کنید";
+                ForseClose = true;
+            }
+            return index;
         }
 
         private void SaveUICalendarScreenShot(string path, CalendarType calendarType, DateTime nowDateTime, int? hijriAdjustment = null)

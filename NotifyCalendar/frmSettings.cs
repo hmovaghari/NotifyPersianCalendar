@@ -15,13 +15,13 @@ namespace NotifyCalendar
 {
     public partial class frmSettings : Form
     {
-        private Calendar Calendar;
+        private Calendar calendar;
         private Settings defaultSettings = Settings.Default;
 
         public frmSettings(Calendar calendar)
         {
             InitializeComponent();
-            Calendar = calendar;
+            this.calendar = calendar;
             DialogResult = DialogResult.None;
         }
 
@@ -62,7 +62,7 @@ namespace NotifyCalendar
         private void cmbCalendarType_SelectedIndexChanged(object sender, EventArgs e)
         {
             var calendarType = GetCalendarTypeFromCMB();
-            lblCalendarType.Text = CalendarFanctions.GetCalendar(Calendar, calendarType).ToString();
+            lblCalendarType.Text = calendar.Text(calendarType);
         }
 
         private byte GetCalendarTypeFromCMB()
@@ -72,8 +72,9 @@ namespace NotifyCalendar
 
         private void cmbHijriAdjustment_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var hijriAdjustment = GetHijriAdjustmentFromCMB();
-            lblHijriAdjustment.Text = CalendarFanctions.GetHijriDate(hijriAdjustment);
+            var _calendar = new Calendar();
+            _calendar.SelectedDateTime = DateTime.Now;
+            lblHijriAdjustment.Text = _calendar.GetHijriDate(GetHijriAdjustmentFromCMB());
         }
 
         private int GetHijriAdjustmentFromCMB()
@@ -220,29 +221,29 @@ namespace NotifyCalendar
             var selectedPath = GetSelectedPathFromFolderDialog();
             if (!GetIsDefaultPathFromCHK() && (string.IsNullOrEmpty(selectedPath) || !Directory.Exists(selectedPath)))
             {
-                ShowError(message: "لطفا مسیر آلبوم تصاویر را از تب 'پس زمینه' انتخاب نمائید", caption: "خطا");
+                ShowError(message: "لطفا مسیر آلبوم تصاویر را از تب 'پس زمینه' انتخاب نمائید");
                 return false;
             }
 
             
             if (GetIsTimerOnFromCHK() && (GetIntervalFromNUM() == 0 || GetIntervalTypeFromCMB() == 0))
             {
-                ShowError(message: "لطفا نحوه‌ی تغییر اوتومات تصاویر را از تب 'پس زمینه' انتخاب نمائید", caption: "خطا");
+                ShowError(message: "لطفا نحوه‌ی تغییر اوتومات تصاویر را از تب 'پس زمینه' انتخاب نمائید");
                 return false;
             }
 
             if (IsShowCalendarsChecked() && GetBackgroundLocationFromCMB() == 0)
             {
-                ShowError(message: "لطفا محل قرارگیری تقویم را از تب 'پس زمینه' انتخاب نمائید", caption: "خطا");
+                ShowError(message: "لطفا محل قرارگیری تقویم را از تب 'پس زمینه' انتخاب نمائید");
                 return false;
             }
 
             return true;
         }
 
-        private void ShowError(string message, string caption)
+        private void ShowError(string message)
         {
-            MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error,
+            MessageBox.Show(message, @"خطایی رخ داده!", MessageBoxButtons.OK, MessageBoxIcon.Error,
                 MessageBoxDefaultButton.Button1, MessageBoxOptions.RightAlign | MessageBoxOptions.RtlReading);
         }
 
