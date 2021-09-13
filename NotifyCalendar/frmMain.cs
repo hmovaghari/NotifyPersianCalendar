@@ -143,7 +143,7 @@ namespace NotifyCalendar
 
         private void GetDate()
         {
-            calendar.DateTime = DateTime.Now;
+            calendar.SelectedDateTime = DateTime.Now;
             calendar.HijriAdjustment = defaultSettings.HijriAdjustment;
         }
 
@@ -179,7 +179,7 @@ namespace NotifyCalendar
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            calendar.DateTime = DateTime.Now;
+            calendar.SelectedDateTime = DateTime.Now;
             frmSettings frmSettings = new frmSettings(calendar);
             notify.ContextMenuStrip.Enabled = false;
             var result = frmSettings.ShowDialog();
