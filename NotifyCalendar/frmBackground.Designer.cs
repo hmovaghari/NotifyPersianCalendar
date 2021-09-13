@@ -319,7 +319,6 @@ namespace NotifyCalendar
             this.ClientSize = new System.Drawing.Size(1620, 920);
             this.Controls.Add(this.pnlBackground);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmBackground";
             this.Text = "frmBackground";
             this.pnlBackground.ResumeLayout(false);
