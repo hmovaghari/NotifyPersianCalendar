@@ -55,12 +55,12 @@ namespace NotifyCalendar
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblHijriAdjustment = new System.Windows.Forms.Label();
             this.cmbHijriAdjustment = new System.Windows.Forms.ComboBox();
+            this.tabEvents = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.folder = new System.Windows.Forms.FolderBrowserDialog();
-            this.tabEvents = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabDesktop.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -318,9 +318,9 @@ namespace NotifyCalendar
             // 
             this.groupBox2.Controls.Add(this.lblCalendarType);
             this.groupBox2.Controls.Add(this.cmbCalendarType);
-            this.groupBox2.Location = new System.Drawing.Point(14, 78);
+            this.groupBox2.Location = new System.Drawing.Point(14, 93);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(447, 101);
+            this.groupBox2.Size = new System.Drawing.Size(447, 128);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "نوع نمایش تقویم";
@@ -329,7 +329,7 @@ namespace NotifyCalendar
             // 
             this.lblCalendarType.AutoSize = true;
             this.lblCalendarType.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCalendarType.Location = new System.Drawing.Point(6, 35);
+            this.lblCalendarType.Location = new System.Drawing.Point(6, 69);
             this.lblCalendarType.Name = "lblCalendarType";
             this.lblCalendarType.Size = new System.Drawing.Size(84, 13);
             this.lblCalendarType.TabIndex = 2;
@@ -344,9 +344,9 @@ namespace NotifyCalendar
             "حالت 1",
             "حالت 2",
             "حالت 3"});
-            this.cmbCalendarType.Location = new System.Drawing.Point(230, 32);
+            this.cmbCalendarType.Location = new System.Drawing.Point(229, 35);
             this.cmbCalendarType.Name = "cmbCalendarType";
-            this.cmbCalendarType.Size = new System.Drawing.Size(200, 21);
+            this.cmbCalendarType.Size = new System.Drawing.Size(201, 21);
             this.cmbCalendarType.TabIndex = 1;
             this.cmbCalendarType.SelectedIndexChanged += new System.EventHandler(this.cmbCalendarType_SelectedIndexChanged);
             // 
@@ -357,7 +357,7 @@ namespace NotifyCalendar
             this.groupBox1.Controls.Add(this.cmbHijriAdjustment);
             this.groupBox1.Location = new System.Drawing.Point(14, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(448, 59);
+            this.groupBox1.Size = new System.Drawing.Size(448, 75);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "اختلاف ماه قمری";
@@ -366,7 +366,7 @@ namespace NotifyCalendar
             // 
             this.lblHijriAdjustment.AutoSize = true;
             this.lblHijriAdjustment.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHijriAdjustment.Location = new System.Drawing.Point(6, 22);
+            this.lblHijriAdjustment.Location = new System.Drawing.Point(6, 46);
             this.lblHijriAdjustment.Name = "lblHijriAdjustment";
             this.lblHijriAdjustment.Size = new System.Drawing.Size(90, 13);
             this.lblHijriAdjustment.TabIndex = 3;
@@ -383,11 +383,20 @@ namespace NotifyCalendar
             "مشکلی ندارد",
             "یک روز عقب تر است",
             "دو روز عقب تر است"});
-            this.cmbHijriAdjustment.Location = new System.Drawing.Point(230, 19);
+            this.cmbHijriAdjustment.Location = new System.Drawing.Point(229, 19);
             this.cmbHijriAdjustment.Name = "cmbHijriAdjustment";
-            this.cmbHijriAdjustment.Size = new System.Drawing.Size(200, 21);
+            this.cmbHijriAdjustment.Size = new System.Drawing.Size(201, 21);
             this.cmbHijriAdjustment.TabIndex = 0;
             this.cmbHijriAdjustment.SelectedIndexChanged += new System.EventHandler(this.cmbHijriAdjustment_SelectedIndexChanged);
+            // 
+            // tabEvents
+            // 
+            this.tabEvents.Location = new System.Drawing.Point(4, 22);
+            this.tabEvents.Name = "tabEvents";
+            this.tabEvents.Size = new System.Drawing.Size(471, 386);
+            this.tabEvents.TabIndex = 2;
+            this.tabEvents.Text = "رویدادها";
+            this.tabEvents.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
             // 
@@ -442,15 +451,6 @@ namespace NotifyCalendar
             this.btnSave.Text = "ذخیره";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // tabEvents
-            // 
-            this.tabEvents.Location = new System.Drawing.Point(4, 22);
-            this.tabEvents.Name = "tabEvents";
-            this.tabEvents.Size = new System.Drawing.Size(471, 386);
-            this.tabEvents.TabIndex = 2;
-            this.tabEvents.Text = "رویدادها";
-            this.tabEvents.UseVisualStyleBackColor = true;
             // 
             // frmSettings
             // 

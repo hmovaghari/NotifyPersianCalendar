@@ -190,6 +190,12 @@ namespace NotifyCalendar
                 StrartTimer();
             }
             frmSettings.Dispose();
+            hoho();
+        }
+
+        private void hoho()
+        {
+            throw new NotImplementedException();
         }
     }
 }

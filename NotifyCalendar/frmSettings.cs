@@ -21,6 +21,7 @@ namespace NotifyCalendar
         public frmSettings(Calendar calendar)
         {
             InitializeComponent();
+            tabEvents.Dispose();
             this.calendar = calendar;
             DialogResult = DialogResult.None;
         }
