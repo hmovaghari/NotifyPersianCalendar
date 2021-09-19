@@ -41,6 +41,7 @@ namespace NotifyCalendar
             this.btnAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.btnExit = new System.Windows.Forms.ToolStripMenuItem();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.btnOpenAlbum = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,13 +59,14 @@ namespace NotifyCalendar
             this.btnEvents,
             this.ایجادرویدادجدیدToolStripMenuItem,
             this.تغییرصفحهنمایشToolStripMenuItem,
+            this.btnOpenAlbum,
             this.تبدیلتاریخToolStripMenuItem,
             this.btnSettings,
             this.btnAbout,
             this.btnExit});
             this.menu.Name = "menu";
             this.menu.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.menu.Size = new System.Drawing.Size(181, 180);
+            this.menu.Size = new System.Drawing.Size(181, 202);
             // 
             // btnEvents
             // 
@@ -119,6 +121,13 @@ namespace NotifyCalendar
             // 
             this.timer.Tick += new System.EventHandler(this.BackgroundChenger);
             // 
+            // btnOpenAlbum
+            // 
+            this.btnOpenAlbum.Name = "btnOpenAlbum";
+            this.btnOpenAlbum.Size = new System.Drawing.Size(180, 22);
+            this.btnOpenAlbum.Text = "آلبوم تصاویر پس‌زمینه";
+            this.btnOpenAlbum.Click += new System.EventHandler(this.btnOpenAlbum_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -146,6 +155,7 @@ namespace NotifyCalendar
         private System.Windows.Forms.ToolStripMenuItem تغییرصفحهنمایشToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ایجادرویدادجدیدToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem تبدیلتاریخToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btnOpenAlbum;
     }
 }
 

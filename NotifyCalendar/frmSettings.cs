@@ -48,9 +48,9 @@ namespace NotifyCalendar
             chkIsShowHijriCalendar.Checked = defaultSettings.IsShowHijriCalendar;
             chkIsShowGregorianCalendar.Checked = defaultSettings.IsShowGregorianCalendar;
             
-            chkDefaultPath.Checked = defaultSettings.IsDefaultPth;
-            folder.SelectedPath = defaultSettings.Path;
-            chkDefaultPath_CheckedChanged(null, null);
+            chkDefaultPicturesAlbumPath.Checked = defaultSettings.IsDefaultPicturesAlbumPath;
+            folder.SelectedPath = defaultSettings.PicturesAlbumPath;
+            chkDefaultPicturesAlbumPath_CheckedChanged(null, null);
 
             chkIsTimerOn.Checked = defaultSettings.IsTimerOn;
             numInterval.Value = defaultSettings.Interval;
@@ -83,22 +83,22 @@ namespace NotifyCalendar
             return cmbHijriAdjustment.SelectedIndex - 2;
         }
 
-        private void chkDefaultPath_CheckedChanged(object sender, EventArgs e)
+        private void chkDefaultPicturesAlbumPath_CheckedChanged(object sender, EventArgs e)
         {
-            txtPath.Enabled = !GetIsDefaultPathFromCHK();
-            var selectedPath = GetSelectedPathFromFolderDialog();
-            txtPath.Text = selectedPath;
+            txtPicturesAlbumPath.Enabled = !GetIsDefaultPicturesAlbumPathFromCHK();
+            var selectedPath = GetSelectedPicturesAlbumPathFromFolderDialog();
+            txtPicturesAlbumPath.Text = selectedPath;
             folder.SelectedPath = selectedPath;
         }
 
-        private string GetSelectedPathFromFolderDialog()
+        private string GetSelectedPicturesAlbumPathFromFolderDialog()
         {
-            return txtPath.Enabled ? folder.SelectedPath : string.Empty;
+            return txtPicturesAlbumPath.Enabled ? folder.SelectedPath : string.Empty;
         }
 
-        private bool GetIsDefaultPathFromCHK()
+        private bool GetIsDefaultPicturesAlbumPathFromCHK()
         {
-            return chkDefaultPath.Checked;
+            return chkDefaultPicturesAlbumPath.Checked;
         }
 
         private void chkIsTimerOn_CheckedChanged(object sender, EventArgs e)
@@ -131,8 +131,8 @@ namespace NotifyCalendar
             
             if (result == DialogResult.OK)
             {
-                chkDefaultPath.Checked = false;
-                chkDefaultPath_CheckedChanged(null, null);
+                chkDefaultPicturesAlbumPath.Checked = false;
+                chkDefaultPicturesAlbumPath_CheckedChanged(null, null);
             }
         }
 
@@ -202,8 +202,8 @@ namespace NotifyCalendar
             {
                 defaultSettings.HijriAdjustment = GetHijriAdjustmentFromCMB();
                 defaultSettings.CalendarShowType = GetCalendarTypeFromCMB();
-                defaultSettings.IsDefaultPth = GetIsDefaultPathFromCHK();
-                defaultSettings.Path = GetSelectedPathFromFolderDialog();
+                defaultSettings.IsDefaultPicturesAlbumPath = GetIsDefaultPicturesAlbumPathFromCHK();
+                defaultSettings.PicturesAlbumPath = GetSelectedPicturesAlbumPathFromFolderDialog();
                 defaultSettings.IsTimerOn = GetIsTimerOnFromCHK();
                 defaultSettings.Interval = GetIntervalFromNUM();
                 defaultSettings.IntervalType = GetIntervalTypeFromCMB();
@@ -219,8 +219,8 @@ namespace NotifyCalendar
 
         private bool ControlData()
         {
-            var selectedPath = GetSelectedPathFromFolderDialog();
-            if (!GetIsDefaultPathFromCHK() && (string.IsNullOrEmpty(selectedPath) || !Directory.Exists(selectedPath)))
+            var selectedPath = GetSelectedPicturesAlbumPathFromFolderDialog();
+            if (!GetIsDefaultPicturesAlbumPathFromCHK() && (string.IsNullOrEmpty(selectedPath) || !Directory.Exists(selectedPath)))
             {
                 ShowError(message: "لطفا مسیر آلبوم تصاویر را از تب 'پس زمینه' انتخاب نمائید");
                 return false;

@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -190,6 +192,12 @@ namespace NotifyCalendar
                 StrartTimer();
             }
             frmSettings.Dispose();
+        }
+
+        private void btnOpenAlbum_Click(object sender, EventArgs e)
+        {
+            var gallery = new Gallery();
+            Process.Start(gallery.GetGalleryPath());
         }
     }
 }

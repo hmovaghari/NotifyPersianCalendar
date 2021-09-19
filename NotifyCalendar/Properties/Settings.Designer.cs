@@ -50,24 +50,24 @@ namespace NotifyCalendar.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool IsDefaultPth {
+        public bool IsDefaultPicturesAlbumPath {
             get {
-                return ((bool)(this["IsDefaultPth"]));
+                return ((bool)(this["IsDefaultPicturesAlbumPath"]));
             }
             set {
-                this["IsDefaultPth"] = value;
+                this["IsDefaultPicturesAlbumPath"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Path {
+        public string PicturesAlbumPath {
             get {
-                return ((string)(this["Path"]));
+                return ((string)(this["PicturesAlbumPath"]));
             }
             set {
-                this["Path"] = value;
+                this["PicturesAlbumPath"] = value;
             }
         }
         

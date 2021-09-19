@@ -8,10 +8,10 @@
     <Setting Name="CalendarShowType" Type="System.Byte" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="IsDefaultPth" Type="System.Boolean" Scope="User">
+    <Setting Name="IsDefaultPicturesAlbumPath" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="Path" Type="System.String" Scope="User">
+    <Setting Name="PicturesAlbumPath" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="IsTimerOn" Type="System.Boolean" Scope="User">

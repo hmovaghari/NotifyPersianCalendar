@@ -45,9 +45,9 @@ namespace NotifyCalendar
             this.chkIsTimerOn = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnBrowse = new System.Windows.Forms.Button();
-            this.txtPath = new System.Windows.Forms.TextBox();
+            this.txtPicturesAlbumPath = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.chkDefaultPath = new System.Windows.Forms.CheckBox();
+            this.chkDefaultPicturesAlbumPath = new System.Windows.Forms.CheckBox();
             this.tabCalendar = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblCalendarType = new System.Windows.Forms.Label();
@@ -249,9 +249,9 @@ namespace NotifyCalendar
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.btnBrowse);
-            this.groupBox3.Controls.Add(this.txtPath);
+            this.groupBox3.Controls.Add(this.txtPicturesAlbumPath);
             this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.chkDefaultPath);
+            this.groupBox3.Controls.Add(this.chkDefaultPicturesAlbumPath);
             this.groupBox3.Location = new System.Drawing.Point(9, 15);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(451, 87);
@@ -272,13 +272,13 @@ namespace NotifyCalendar
             this.btnBrowse.UseVisualStyleBackColor = true;
             this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
-            // txtPath
+            // txtPicturesAlbumPath
             // 
-            this.txtPath.Location = new System.Drawing.Point(6, 48);
-            this.txtPath.Name = "txtPath";
-            this.txtPath.ReadOnly = true;
-            this.txtPath.Size = new System.Drawing.Size(337, 21);
-            this.txtPath.TabIndex = 2;
+            this.txtPicturesAlbumPath.Location = new System.Drawing.Point(6, 48);
+            this.txtPicturesAlbumPath.Name = "txtPicturesAlbumPath";
+            this.txtPicturesAlbumPath.ReadOnly = true;
+            this.txtPicturesAlbumPath.Size = new System.Drawing.Size(337, 21);
+            this.txtPicturesAlbumPath.TabIndex = 2;
             // 
             // label1
             // 
@@ -290,17 +290,18 @@ namespace NotifyCalendar
             this.label1.TabIndex = 1;
             this.label1.Text = "مسیر انتخابی";
             // 
-            // chkDefaultPath
+            // chkDefaultPicturesAlbumPath
             // 
-            this.chkDefaultPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkDefaultPath.AutoSize = true;
-            this.chkDefaultPath.Location = new System.Drawing.Point(350, 22);
-            this.chkDefaultPath.Name = "chkDefaultPath";
-            this.chkDefaultPath.Size = new System.Drawing.Size(87, 17);
-            this.chkDefaultPath.TabIndex = 0;
-            this.chkDefaultPath.Text = "مسیر پیفرض";
-            this.chkDefaultPath.UseVisualStyleBackColor = true;
-            this.chkDefaultPath.CheckedChanged += new System.EventHandler(this.chkDefaultPath_CheckedChanged);
+            this.chkDefaultPicturesAlbumPath.AccessibleDescription = "";
+            this.chkDefaultPicturesAlbumPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkDefaultPicturesAlbumPath.AutoSize = true;
+            this.chkDefaultPicturesAlbumPath.Location = new System.Drawing.Point(350, 22);
+            this.chkDefaultPicturesAlbumPath.Name = "chkDefaultPicturesAlbumPath";
+            this.chkDefaultPicturesAlbumPath.Size = new System.Drawing.Size(87, 17);
+            this.chkDefaultPicturesAlbumPath.TabIndex = 0;
+            this.chkDefaultPicturesAlbumPath.Text = "مسیر پیفرض";
+            this.chkDefaultPicturesAlbumPath.UseVisualStyleBackColor = true;
+            this.chkDefaultPicturesAlbumPath.CheckedChanged += new System.EventHandler(this.chkDefaultPicturesAlbumPath_CheckedChanged);
             // 
             // tabCalendar
             // 
@@ -508,9 +509,9 @@ namespace NotifyCalendar
         private System.Windows.Forms.Label lblHijriAdjustment;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnBrowse;
-        private System.Windows.Forms.TextBox txtPath;
+        private System.Windows.Forms.TextBox txtPicturesAlbumPath;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox chkDefaultPath;
+        private System.Windows.Forms.CheckBox chkDefaultPicturesAlbumPath;
         private System.Windows.Forms.FolderBrowserDialog folder;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.CheckBox chkIsTimerOn;

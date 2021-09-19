@@ -17,9 +17,9 @@ namespace NotifyCalendar
 
         internal List<string> GetGalleryFiles()
         {
-            if (defaultSettings.IsDefaultPth || !Directory.Exists(defaultSettings.Path))
+            if (defaultSettings.IsDefaultPicturesAlbumPath || !Directory.Exists(defaultSettings.PicturesAlbumPath))
             {
-                if (!defaultSettings.IsDefaultPth && !Directory.Exists(defaultSettings.Path))
+                if (!defaultSettings.IsDefaultPicturesAlbumPath && !Directory.Exists(defaultSettings.PicturesAlbumPath))
                 {
                     ChangeToDefaultPath();
                     Error = "آلبوم تصاویر یافت نشد" + Environment.NewLine +
@@ -35,9 +35,17 @@ namespace NotifyCalendar
             }
             else
             {
-                return CreateIfNotExistsAndGetGalleryImages(defaultSettings.Path);
+                return CreateIfNotExistsAndGetGalleryImages(defaultSettings.PicturesAlbumPath);
             }
+        }
 
+        internal string GetGalleryPath()
+        {
+            if (defaultSettings.IsDefaultPicturesAlbumPath)
+            {
+                return defaultGallery;
+            }
+            return defaultSettings.PicturesAlbumPath;
         }
 
         private List<string> CreateIfNotExistsAndGetGalleryImages(string path)
@@ -72,8 +80,8 @@ namespace NotifyCalendar
 
         private void ChangeToDefaultPath()
         {
-            defaultSettings.IsDefaultPth = true;
-            defaultSettings.Path = string.Empty;
+            defaultSettings.IsDefaultPicturesAlbumPath = true;
+            defaultSettings.PicturesAlbumPath = string.Empty;
             defaultSettings.Save();
         }
 
