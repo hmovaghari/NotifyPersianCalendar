@@ -35,7 +35,7 @@ namespace NotifyCalendar
         private void frmMain_Load(object sender, EventArgs e)
         {
             HideForm();
-            LoadCalendar();
+            LoadCalendar(null, null);
             StrartTimer();
         }
 
@@ -126,7 +126,7 @@ namespace NotifyCalendar
             ShowInTaskbar = false;
         }
 
-        private void LoadCalendar()
+        private void LoadCalendar(object sender, MouseEventArgs e)
         {
             if (Calendar.IsValidRegion)
             {
@@ -188,7 +188,7 @@ namespace NotifyCalendar
             notify.ContextMenuStrip.Enabled = true;
             if (result == DialogResult.OK)
             {
-                LoadCalendar();
+                LoadCalendar(null, null);
                 StrartTimer();
             }
             frmSettings.Dispose();

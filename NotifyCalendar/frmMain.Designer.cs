@@ -36,12 +36,12 @@ namespace NotifyCalendar
             this.btnEvents = new System.Windows.Forms.ToolStripMenuItem();
             this.ایجادرویدادجدیدToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تغییرصفحهنمایشToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnOpenAlbum = new System.Windows.Forms.ToolStripMenuItem();
             this.تبدیلتاریخToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.btnExit = new System.Windows.Forms.ToolStripMenuItem();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.btnOpenAlbum = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,6 +51,7 @@ namespace NotifyCalendar
             this.notify.Icon = ((System.Drawing.Icon)(resources.GetObject("notify.Icon")));
             this.notify.Text = "Notify Calendar";
             this.notify.Visible = true;
+            this.notify.MouseMove += new System.Windows.Forms.MouseEventHandler(this.LoadCalendar);
             // 
             // menu
             // 
@@ -66,67 +67,67 @@ namespace NotifyCalendar
             this.btnExit});
             this.menu.Name = "menu";
             this.menu.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.menu.Size = new System.Drawing.Size(181, 202);
+            this.menu.Size = new System.Drawing.Size(178, 180);
             // 
             // btnEvents
             // 
             this.btnEvents.Name = "btnEvents";
-            this.btnEvents.Size = new System.Drawing.Size(180, 22);
+            this.btnEvents.Size = new System.Drawing.Size(177, 22);
             this.btnEvents.Text = "رویداد امروز";
             this.btnEvents.Visible = false;
             // 
             // ایجادرویدادجدیدToolStripMenuItem
             // 
             this.ایجادرویدادجدیدToolStripMenuItem.Name = "ایجادرویدادجدیدToolStripMenuItem";
-            this.ایجادرویدادجدیدToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ایجادرویدادجدیدToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.ایجادرویدادجدیدToolStripMenuItem.Text = "ایجاد رویداد جدید";
             this.ایجادرویدادجدیدToolStripMenuItem.Visible = false;
             // 
             // تغییرصفحهنمایشToolStripMenuItem
             // 
             this.تغییرصفحهنمایشToolStripMenuItem.Name = "تغییرصفحهنمایشToolStripMenuItem";
-            this.تغییرصفحهنمایشToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.تغییرصفحهنمایشToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.تغییرصفحهنمایشToolStripMenuItem.Text = "تغییر پس زمینه";
             this.تغییرصفحهنمایشToolStripMenuItem.Click += new System.EventHandler(this.BackgroundChenger);
+            // 
+            // btnOpenAlbum
+            // 
+            this.btnOpenAlbum.Name = "btnOpenAlbum";
+            this.btnOpenAlbum.Size = new System.Drawing.Size(177, 22);
+            this.btnOpenAlbum.Text = "آلبوم تصاویر پس‌زمینه";
+            this.btnOpenAlbum.Click += new System.EventHandler(this.btnOpenAlbum_Click);
             // 
             // تبدیلتاریخToolStripMenuItem
             // 
             this.تبدیلتاریخToolStripMenuItem.Name = "تبدیلتاریخToolStripMenuItem";
-            this.تبدیلتاریخToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.تبدیلتاریخToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.تبدیلتاریخToolStripMenuItem.Text = "تبدیل تاریخ";
             this.تبدیلتاریخToolStripMenuItem.Visible = false;
             // 
             // btnSettings
             // 
             this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(180, 22);
+            this.btnSettings.Size = new System.Drawing.Size(177, 22);
             this.btnSettings.Text = "تنظیمات";
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // btnAbout
             // 
             this.btnAbout.Name = "btnAbout";
-            this.btnAbout.Size = new System.Drawing.Size(180, 22);
+            this.btnAbout.Size = new System.Drawing.Size(177, 22);
             this.btnAbout.Text = "درباره";
             this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
             // 
             // btnExit
             // 
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(180, 22);
+            this.btnExit.Size = new System.Drawing.Size(177, 22);
             this.btnExit.Text = "خروج";
             this.btnExit.Click += new System.EventHandler(this.frmMain_Leave);
             // 
             // timer
             // 
             this.timer.Tick += new System.EventHandler(this.BackgroundChenger);
-            // 
-            // btnOpenAlbum
-            // 
-            this.btnOpenAlbum.Name = "btnOpenAlbum";
-            this.btnOpenAlbum.Size = new System.Drawing.Size(180, 22);
-            this.btnOpenAlbum.Text = "آلبوم تصاویر پس‌زمینه";
-            this.btnOpenAlbum.Click += new System.EventHandler(this.btnOpenAlbum_Click);
             // 
             // frmMain
             // 
