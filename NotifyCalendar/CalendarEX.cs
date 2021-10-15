@@ -19,6 +19,17 @@ namespace NotifyCalendar
             return result.ToString();
         }
 
+        internal static int? GetHijriAdjustmentOnlie(this Calendar calendar)
+        {
+            var hijriAdjustmentOnjline = new int?();
+            try
+            {
+                hijriAdjustmentOnjline = Calendar.GetHijriAdjustmentOnline(calendar.SelectedDateTime);
+            }
+            catch { }
+            return hijriAdjustmentOnjline;
+        }
+
 
         private static string GetPersianDate(Calendar calendar, byte calendarType)
         {

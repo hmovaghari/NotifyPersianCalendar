@@ -41,7 +41,8 @@ namespace NotifyCalendar
             this.btnSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.btnExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.backgroundTimer = new System.Windows.Forms.Timer(this.components);
+            this.calendarTimer = new System.Windows.Forms.Timer(this.components);
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -125,9 +126,14 @@ namespace NotifyCalendar
             this.btnExit.Text = "خروج";
             this.btnExit.Click += new System.EventHandler(this.frmMain_Leave);
             // 
-            // timer
+            // backgroundTimer
             // 
-            this.timer.Tick += new System.EventHandler(this.BackgroundChenger);
+            this.backgroundTimer.Tick += new System.EventHandler(this.BackgroundChenger);
+            // 
+            // calendarTimer
+            // 
+            this.calendarTimer.Interval = 1000;
+            this.calendarTimer.Tick += new System.EventHandler(this.LoadCalendar);
             // 
             // frmMain
             // 
@@ -152,11 +158,12 @@ namespace NotifyCalendar
         private System.Windows.Forms.ToolStripMenuItem btnSettings;
         private System.Windows.Forms.ToolStripMenuItem btnAbout;
         private System.Windows.Forms.ToolStripMenuItem btnExit;
-        private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Timer backgroundTimer;
         private System.Windows.Forms.ToolStripMenuItem btnBackgroundChenger;
         private System.Windows.Forms.ToolStripMenuItem btnAddEvent;
         private System.Windows.Forms.ToolStripMenuItem btnDateConvert;
         private System.Windows.Forms.ToolStripMenuItem btnOpenAlbum;
+        private System.Windows.Forms.Timer calendarTimer;
     }
 }
 

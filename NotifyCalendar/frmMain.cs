@@ -36,8 +36,14 @@ namespace NotifyCalendar
         {
             HideForm();
             SetRunDate();
-            LoadCalendar(null, null);
-            StrartTimer();
+            StartCalendarTimer();
+            StrartBackgroundTimer();
+            SetIsFirstRun(false);
+        }
+
+        private void SetIsFirstRun(bool @bool)
+        {
+            isFirstRun = @bool;
         }
 
         private void SetRunDate()
@@ -46,27 +52,24 @@ namespace NotifyCalendar
             defaultSettings.Save();
         }
 
-        private void StrartTimer()
+        private void StrartBackgroundTimer()
         {
             if (defaultSettings.IsTimerOn)
             {
-                timer.Interval = GetInterval();
-                timer.Start();
+                backgroundTimer.Interval = GetInterval();
+                backgroundTimer.Start();
+                BackgroundChenger(null, null);
             }
             else
             {
-                timer.Stop();
+                backgroundTimer.Stop();
             }
+        }
 
-            if (isFirstRun || defaultSettings.IsTimerOn)
-            {
-                BackgroundChenger(null, null);
-
-                if (isFirstRun)
-                {
-                    isFirstRun = false;
-                }
-            }
+        private void StartCalendarTimer()
+        {
+            LoadCalendar(null, null);
+            calendarTimer.Start();
         }
 
         private int GetInterval()
@@ -132,7 +135,7 @@ namespace NotifyCalendar
             ShowInTaskbar = false;
         }
 
-        private void LoadCalendar(object sender, MouseEventArgs e)
+        private void LoadCalendar(object sender, EventArgs e)
         {
             if (Calendar.IsValidRegion)
             {
@@ -157,20 +160,13 @@ namespace NotifyCalendar
 
         private int GetHijriAdjustment()
         {
-            if (defaultSettings.IsCalculateHijriAdjustmentOnlie &&
+            if (GetIsCalculateHijriAdjustmentOnlie() &&
                 (
                     isFirstRun ||
-                    (
-                        calendar.SelectedDateTime >= defaultSettings.RunDate.AddDays(1))
-                    )
+                    calendar.SelectedDateTime >= defaultSettings.RunDate.AddDays(1))
                 )
             {
-                var hijriAdjustmentOnjline = new int?();
-                try
-                {
-                    hijriAdjustmentOnjline = Calendar.GetHijriAdjustmentOnline(calendar.SelectedDateTime);
-                }
-                catch {}
+                var hijriAdjustmentOnjline = calendar.GetHijriAdjustmentOnlie();
                 if (hijriAdjustmentOnjline != null)
                 {
                     defaultSettings.HijriAdjustment = (int)hijriAdjustmentOnjline;
@@ -182,11 +178,16 @@ namespace NotifyCalendar
                     defaultSettings.IsCalculateHijriAdjustmentOnlie = false;
                     defaultSettings.Save();
                     ShowError("ارتباط با اینترنت وجود ندارد!" +
-                        Environment.NewLine + 
+                        Environment.NewLine +
                         "تنظیمات مربوط به محاسبه آنلاین اختلاف روز قمری به حالت پیشفرض تغییر نمود!");
                 }
             }
             return defaultSettings.HijriAdjustment;
+        }
+
+        private bool GetIsCalculateHijriAdjustmentOnlie()
+        {
+            return defaultSettings.IsCalculateHijriAdjustmentOnlie;
         }
 
         private void ChangeTextOfNotifity()
@@ -222,14 +223,17 @@ namespace NotifyCalendar
         private void btnSettings_Click(object sender, EventArgs e)
         {
             calendar.SelectedDateTime = DateTime.Now;
+            var isCalculateHijriAdjustmentOffline = GetIsCalculateHijriAdjustmentOnlie() == false;
             frmSettings frmSettings = new frmSettings(calendar);
             notify.ContextMenuStrip.Enabled = false;
             var result = frmSettings.ShowDialog();
             notify.ContextMenuStrip.Enabled = true;
             if (result == DialogResult.OK)
             {
+                SetIsFirstRun(isCalculateHijriAdjustmentOffline && GetIsCalculateHijriAdjustmentOnlie());
                 LoadCalendar(null, null);
-                StrartTimer();
+                StrartBackgroundTimer();
+                SetIsFirstRun(false);
             }
             frmSettings.Dispose();
         }
