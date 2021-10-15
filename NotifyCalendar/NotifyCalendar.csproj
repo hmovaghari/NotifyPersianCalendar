@@ -61,7 +61,7 @@
       <DependentUpon>frmAbount.cs</DependentUpon>
     </Compile>
     <Compile Include="frmBackground.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="frmBackground.Designer.cs">
       <DependentUpon>frmBackground.cs</DependentUpon>
@@ -71,6 +71,12 @@
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPleaseWait.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPleaseWait.Designer.cs">
+      <DependentUpon>frmPleaseWait.cs</DependentUpon>
     </Compile>
     <Compile Include="frmSettings.cs">
       <SubType>Form</SubType>
@@ -89,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPleaseWait.resx">
+      <DependentUpon>frmPleaseWait.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSettings.resx">
       <DependentUpon>frmSettings.cs</DependentUpon>
@@ -256,6 +265,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\github.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Loading.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Persian.Calendar.Library;
 using System.IO;
 using NotifyCalendar.Properties;
+using System.Threading;
 
 namespace NotifyCalendar
 {
@@ -41,6 +42,7 @@ namespace NotifyCalendar
         private void LoadData()
         {
             cmbHijriAdjustment.SelectedIndex = defaultSettings.HijriAdjustment + 2;
+            chkIsCalculateHijriAdjustmentOnline.Checked = defaultSettings.IsCalculateHijriAdjustmentOnlie;
 
             cmbCalendarType.SelectedIndex = defaultSettings.CalendarShowType - 1;
 
@@ -58,6 +60,42 @@ namespace NotifyCalendar
 
             cmbBackgroundLocation.SelectedIndex = defaultSettings.BackgroundLocation - 1;
             cmbBackgroundLocation_SelectedIndexChanged(null, null);
+        }
+
+        private void chkIsOnlineHijriAdjustment_CheckedChanged(object sender, EventArgs e)
+        {
+            var isOnline = GetIsCalculateHijriAdjustmentOnlineFromCHK();
+            cmbHijriAdjustment.Enabled = !isOnline;
+            if (isOnline)
+            {
+                var _frmPleaseWait = new frmPleaseWait(Location.X + 35, Location.Y + 90);
+                Thread pleaseWaitThread = new Thread(_frmPleaseWait.Start);
+                pleaseWaitThread.Start();
+                var onlineijriAdjustmen = new int?();
+                try
+                {
+                    onlineijriAdjustmen = Calendar.GetHijriAdjustmentOnline(DateTime.Now);
+                }
+                catch {}
+                SendKeys.SendWait("{Esc}");//Close _frmPleaseWait
+                pleaseWaitThread.Abort();
+                if (onlineijriAdjustmen.HasValue)
+                {
+                    cmbHijriAdjustment.SelectedIndex = (int)(onlineijriAdjustmen + 2);
+                    cmbHijriAdjustment_SelectedIndexChanged(null, null);
+                }
+                else
+                {
+                    chkIsCalculateHijriAdjustmentOnline.Checked = false;
+                    chkIsOnlineHijriAdjustment_CheckedChanged(null, null);
+                    ShowError("ارتباط با اینترنت وجود ندارد");
+                }
+            }
+        }
+
+        private bool GetIsCalculateHijriAdjustmentOnlineFromCHK()
+        {
+            return chkIsCalculateHijriAdjustmentOnline.Checked;
         }
 
         private void cmbCalendarType_SelectedIndexChanged(object sender, EventArgs e)
@@ -200,6 +238,7 @@ namespace NotifyCalendar
         {
             if (ControlData())
             {
+                defaultSettings.IsCalculateHijriAdjustmentOnlie = GetIsCalculateHijriAdjustmentOnlineFromCHK();
                 defaultSettings.HijriAdjustment = GetHijriAdjustmentFromCMB();
                 defaultSettings.CalendarShowType = GetCalendarTypeFromCMB();
                 defaultSettings.IsDefaultPicturesAlbumPath = GetIsDefaultPicturesAlbumPathFromCHK();

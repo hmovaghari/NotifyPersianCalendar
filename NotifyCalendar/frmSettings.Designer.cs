@@ -53,6 +53,7 @@ namespace NotifyCalendar
             this.lblCalendarType = new System.Windows.Forms.Label();
             this.cmbCalendarType = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkIsCalculateHijriAdjustmentOnline = new System.Windows.Forms.CheckBox();
             this.lblHijriAdjustment = new System.Windows.Forms.Label();
             this.cmbHijriAdjustment = new System.Windows.Forms.ComboBox();
             this.tabEvents = new System.Windows.Forms.TabPage();
@@ -354,6 +355,7 @@ namespace NotifyCalendar
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.chkIsCalculateHijriAdjustmentOnline);
             this.groupBox1.Controls.Add(this.lblHijriAdjustment);
             this.groupBox1.Controls.Add(this.cmbHijriAdjustment);
             this.groupBox1.Location = new System.Drawing.Point(14, 12);
@@ -361,7 +363,20 @@ namespace NotifyCalendar
             this.groupBox1.Size = new System.Drawing.Size(448, 75);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "اختلاف ماه قمری";
+            this.groupBox1.Text = "اختلاف روز قمری";
+            // 
+            // chkIsCalculateHijriAdjustmentOnline
+            // 
+            this.chkIsCalculateHijriAdjustmentOnline.AccessibleDescription = "";
+            this.chkIsCalculateHijriAdjustmentOnline.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkIsCalculateHijriAdjustmentOnline.AutoSize = true;
+            this.chkIsCalculateHijriAdjustmentOnline.Location = new System.Drawing.Point(6, 21);
+            this.chkIsCalculateHijriAdjustmentOnline.Name = "chkIsCalculateHijriAdjustmentOnline";
+            this.chkIsCalculateHijriAdjustmentOnline.Size = new System.Drawing.Size(199, 17);
+            this.chkIsCalculateHijriAdjustmentOnline.TabIndex = 4;
+            this.chkIsCalculateHijriAdjustmentOnline.Text = "اختلاف روز بصورت آنلاین محاسبه شود";
+            this.chkIsCalculateHijriAdjustmentOnline.UseVisualStyleBackColor = true;
+            this.chkIsCalculateHijriAdjustmentOnline.CheckedChanged += new System.EventHandler(this.chkIsOnlineHijriAdjustment_CheckedChanged);
             // 
             // lblHijriAdjustment
             // 
@@ -469,6 +484,7 @@ namespace NotifyCalendar
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "تنظیمات";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.frmSettings_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabDesktop.ResumeLayout(false);
@@ -525,5 +541,6 @@ namespace NotifyCalendar
         private System.Windows.Forms.PictureBox picBackgroundLocation;
         private System.Windows.Forms.ComboBox cmbBackgroundLocation;
         private System.Windows.Forms.TabPage tabEvents;
+        private System.Windows.Forms.CheckBox chkIsCalculateHijriAdjustmentOnline;
     }
 }

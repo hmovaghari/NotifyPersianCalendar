@@ -35,15 +35,21 @@ namespace NotifyCalendar
         private void frmMain_Load(object sender, EventArgs e)
         {
             HideForm();
+            SetRunDate();
             LoadCalendar(null, null);
             StrartTimer();
+        }
+
+        private void SetRunDate()
+        {
+            defaultSettings.RunDate = DateTime.Now.Date;
+            defaultSettings.Save();
         }
 
         private void StrartTimer()
         {
             if (defaultSettings.IsTimerOn)
             {
-                
                 timer.Interval = GetInterval();
                 timer.Start();
             }
@@ -146,7 +152,41 @@ namespace NotifyCalendar
         private void GetDate()
         {
             calendar.SelectedDateTime = DateTime.Now;
-            calendar.HijriAdjustment = defaultSettings.HijriAdjustment;
+            calendar.HijriAdjustment = GetHijriAdjustment();
+        }
+
+        private int GetHijriAdjustment()
+        {
+            if (defaultSettings.IsCalculateHijriAdjustmentOnlie &&
+                (
+                    isFirstRun ||
+                    (
+                        calendar.SelectedDateTime >= defaultSettings.RunDate.AddDays(1))
+                    )
+                )
+            {
+                var hijriAdjustmentOnjline = new int?();
+                try
+                {
+                    hijriAdjustmentOnjline = Calendar.GetHijriAdjustmentOnline(calendar.SelectedDateTime);
+                }
+                catch {}
+                if (hijriAdjustmentOnjline != null)
+                {
+                    defaultSettings.HijriAdjustment = (int)hijriAdjustmentOnjline;
+                    defaultSettings.RunDate = calendar.SelectedDateTime.Date;
+                    defaultSettings.Save();
+                }
+                else
+                {
+                    defaultSettings.IsCalculateHijriAdjustmentOnlie = false;
+                    defaultSettings.Save();
+                    ShowError("ارتباط با اینترنت وجود ندارد!" +
+                        Environment.NewLine + 
+                        "تنظیمات مربوط به محاسبه آنلاین اختلاف روز قمری به حالت پیشفرض تغییر نمود!");
+                }
+            }
+            return defaultSettings.HijriAdjustment;
         }
 
         private void ChangeTextOfNotifity()

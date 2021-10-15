@@ -2,6 +2,12 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="NotifyCalendar.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
+    <Setting Name="RunDate" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="IsCalculateHijriAdjustmentOnlie" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
     <Setting Name="HijriAdjustment" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>

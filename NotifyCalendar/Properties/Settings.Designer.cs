@@ -25,6 +25,29 @@ namespace NotifyCalendar.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.DateTime RunDate {
+            get {
+                return ((global::System.DateTime)(this["RunDate"]));
+            }
+            set {
+                this["RunDate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsCalculateHijriAdjustmentOnlie {
+            get {
+                return ((bool)(this["IsCalculateHijriAdjustmentOnlie"]));
+            }
+            set {
+                this["IsCalculateHijriAdjustmentOnlie"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public int HijriAdjustment {
             get {
