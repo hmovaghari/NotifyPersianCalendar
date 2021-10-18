@@ -18,6 +18,11 @@ namespace NotifyCalendar
             {
                 components.Dispose();
             }
+            btnBrowse.Image.Dispose();
+            picBackgroundLocation.Image.Dispose();
+            picBackgroundLocation.ErrorImage.Dispose();
+            btnSave.Image.Dispose();
+            btnCancel.Image.Dispose();
             base.Dispose(disposing);
         }
 

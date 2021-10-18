@@ -28,6 +28,7 @@ namespace NotifyCalendar
         private void frmMain_Leave(object sender, EventArgs e)
         {
             notify.Visible = false;
+            notify.Icon.Dispose();
             notify.Dispose();
             Application.Exit();
         }
@@ -211,6 +212,7 @@ namespace NotifyCalendar
 
         private void ChageIconOfNotifity()
         {
+            notify.Icon.Dispose();
             notify.Icon = calendar.GetIcon();
         }
 

@@ -34,6 +34,7 @@ namespace NotifyCalendar
             {
                 CalendarImage3.Dispose();
             }
+            sForm = null;
             base.Dispose(disposing);
         }
 

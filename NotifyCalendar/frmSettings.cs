@@ -197,6 +197,7 @@ namespace NotifyCalendar
 
         private void cmbBackgroundLocation_SelectedIndexChanged(object sender, EventArgs e)
         {
+            picBackgroundLocation.Image.Dispose();
             switch (GetBackgroundLocationFromCMB())
             {
                 case 1:

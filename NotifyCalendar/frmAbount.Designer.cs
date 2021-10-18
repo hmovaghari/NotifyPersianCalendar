@@ -18,6 +18,7 @@ namespace NotifyCalendar
             {
                 components.Dispose();
             }
+            btnRepository.Image.Dispose();
             base.Dispose(disposing);
         }
 
