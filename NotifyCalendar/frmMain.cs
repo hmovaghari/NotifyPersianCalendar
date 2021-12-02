@@ -196,10 +196,10 @@ namespace NotifyCalendar
             var calendarShowType = defaultSettings.CalendarShowType;
             var text = calendar.Text(calendarShowType);
 
-            if (text.ToString().Length >= 128)
+            /*if (text.ToString().Length >= 128)
             {
                 throw new ArgumentOutOfRangeException("Text limited to 127 characters");
-            }
+            }*/
 
             Type t = typeof(NotifyIcon);
             BindingFlags hidden = BindingFlags.NonPublic | BindingFlags.Instance;
