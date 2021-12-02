@@ -27,15 +27,14 @@ namespace NotifyCalendar
 
             try
             {
-                image.Save(path);
+                image.Save(path);//ToDo ExternalException A generic error occurred in GDI+
+                SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, path,
+                    SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);
             }
             catch (ExternalException e)
             {
                 //ToDo A generic error occurred in GDI+
             }
-
-            SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, path,
-                SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);
         }
     }
 }
