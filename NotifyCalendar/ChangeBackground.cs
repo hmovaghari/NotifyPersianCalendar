@@ -24,7 +24,15 @@ namespace NotifyCalendar
         public static void Set(Image image)
         {
             var path = currentDirectory + @"\Image.png";
-            image.Save(path);
+
+            try
+            {
+                image.Save(path);
+            }
+            catch (ExternalException e)
+            {
+                //ToDo A generic error occurred in GDI+
+            }
 
             SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, path,
                 SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);
