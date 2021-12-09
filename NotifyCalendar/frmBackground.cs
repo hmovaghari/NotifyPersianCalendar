@@ -144,8 +144,8 @@ namespace NotifyCalendar
         {
             ++index;
             string imagePath = $@"{currentDirectory}\Calendar{index}.png";
-            SaveUICalendarScreenShot(imagePath, calendarType, nowDateTime, hijriAdjustment);
-            calendarImage = GetImage(imagePath);
+            var stream = GetUICalendarScreenShotStream(calendarType, nowDateTime, hijriAdjustment);
+            calendarImage = Image.FromStream(stream);
             if (calendarImage != null)
             {
                 pictureBoxes[index].Image = calendarImage;
@@ -159,14 +159,19 @@ namespace NotifyCalendar
             return index;
         }
 
-        private void SaveUICalendarScreenShot(string path, CalendarType calendarType, DateTime nowDateTime, int? hijriAdjustment = null)
+        public MemoryStream GetUICalendarScreenShotStream(CalendarType calendarType, DateTime nowDateTime,
+            int? hijriAdjustment = null)
         {
             UICalendar uiCalendar = new UICalendar();
             uiCalendar.CalendarType = calendarType;
             uiCalendar.HijriAdjustment = hijriAdjustment;
             uiCalendar.SelectedDateTime = nowDateTime;
-            uiCalendar.GetScreenShot().Save(path);
+            var image = uiCalendar.GetScreenShot();
+            var imageConverter = new ImageConverter();
+            var bytes = (byte[])imageConverter.ConvertTo(image, typeof(byte[]));
+            var stream = new MemoryStream(bytes);
             uiCalendar.Dispose();
+            return stream;
         }
     }
 }
