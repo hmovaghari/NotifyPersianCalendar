@@ -138,19 +138,19 @@ namespace NotifyCalendar
 
         private void LoadCalendar(object sender, EventArgs e)
         {
-            if (Calendar.IsValidRegion)
-            {
-                GetDate();
-                ChangeTextOfNotifity();
-                ChageIconOfNotifity();
-            }
-            else
-            {
-                var error = "لطفا تاریخ سیستم را به میلادی (انگلیسی) تغییر دهید" + Environment.NewLine +
-                    "سپس مجددا نرم‌افزار را اجرا کنید";
-                ShowError(error);
-                frmMain_Leave(null, null);
-            }
+            //if (Calendar.IsValidRegion)
+            //{
+            GetDate();
+            ChangeTextOfNotifity();
+            ChageIconOfNotifity();
+            //}
+            //else
+            //{
+            //    var error = "لطفا تاریخ سیستم را به میلادی (انگلیسی) تغییر دهید" + Environment.NewLine +
+            //        "سپس مجددا نرم‌افزار را اجرا کنید";
+            //    ShowError(error);
+            //    frmMain_Leave(null, null);
+            //}
         }
 
         private void GetDate()
