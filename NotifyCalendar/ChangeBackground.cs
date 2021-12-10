@@ -29,16 +29,28 @@ namespace NotifyCalendar
 
                 switch (backgroundStyle)
                 {
-                    case BackgroundStyle.Tiled:
-                        key.SetValue(@"WallpaperStyle", 1.ToString());
+                    case BackgroundStyle.Tile:
+                        key.SetValue(@"WallpaperStyle", 0.ToString());
                         key.SetValue(@"TileWallpaper", 1.ToString());
                         break;
-                    case BackgroundStyle.Centered:
-                        key.SetValue(@"WallpaperStyle", 1.ToString());
+                    case BackgroundStyle.Center:
+                        key.SetValue(@"WallpaperStyle", 0.ToString());
                         key.SetValue(@"TileWallpaper", 0.ToString());
                         break;
-                    case BackgroundStyle.Stretched:
+                    case BackgroundStyle.Stretch:
                         key.SetValue(@"WallpaperStyle", 2.ToString());
+                        key.SetValue(@"TileWallpaper", 0.ToString());
+                        break;
+                    case BackgroundStyle.Fill:
+                        key.SetValue(@"WallpaperStyle", 10.ToString());
+                        key.SetValue(@"TileWallpaper", 0.ToString());
+                        break;
+                    case BackgroundStyle.Fit:
+                        key.SetValue(@"WallpaperStyle", 6.ToString());
+                        key.SetValue(@"TileWallpaper", 0.ToString());
+                        break;
+                    case BackgroundStyle.Span:
+                        key.SetValue(@"WallpaperStyle", 22.ToString());
                         key.SetValue(@"TileWallpaper", 0.ToString());
                         break;
                     default:
@@ -56,8 +68,11 @@ namespace NotifyCalendar
 
     public enum BackgroundStyle : int
     {
-        Tiled,
-        Centered,
-        Stretched
+        Fill,
+        Fit,
+        Stretch,
+        Tile,
+        Center,
+        Span
     }
 }
