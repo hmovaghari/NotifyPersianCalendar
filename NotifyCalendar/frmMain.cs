@@ -228,6 +228,10 @@ namespace NotifyCalendar
             var isCalculateHijriAdjustmentOffline = GetIsCalculateHijriAdjustmentOnlie() == false;
             frmSettings frmSettings = new frmSettings(calendar);
             notify.ContextMenuStrip.Enabled = false;
+            if (defaultSettings.IsTimerOn)
+            {
+                backgroundTimer.Stop();
+            }
             var result = frmSettings.ShowDialog();
             notify.ContextMenuStrip.Enabled = true;
             if (result == DialogResult.OK)

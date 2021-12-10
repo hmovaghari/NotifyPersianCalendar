@@ -83,6 +83,11 @@ namespace NotifyCalendar
 
         private void AddCalendar()
         {
+            if (defaultSettings.BackgroundLocation == 0)
+            {
+                return;
+            }
+
             var pictureBoxes = GetPictureBoxesByBackgroundLocation(defaultSettings.BackgroundLocation);
 
             if (pictureBoxes.Count > 0)
