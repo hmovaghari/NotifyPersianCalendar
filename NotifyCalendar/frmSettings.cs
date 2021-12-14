@@ -86,9 +86,11 @@ namespace NotifyCalendar
                 }
                 else
                 {
+                    TopMost = false;
                     chkIsCalculateHijriAdjustmentOnline.Checked = false;
                     chkIsOnlineHijriAdjustment_CheckedChanged(null, null);
                     ShowError("ارتباط با اینترنت وجود ندارد");
+                    TopMost = true;
                 }
             }
         }

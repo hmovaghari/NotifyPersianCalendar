@@ -176,11 +176,14 @@ namespace NotifyCalendar
                 }
                 else
                 {
-                    defaultSettings.IsCalculateHijriAdjustmentOnlie = false;
-                    defaultSettings.Save();
-                    ShowError("ارتباط با اینترنت وجود ندارد!" +
-                        Environment.NewLine +
-                        "تنظیمات مربوط به محاسبه آنلاین اختلاف روز قمری به حالت پیشفرض تغییر نمود!");
+                    if (defaultSettings.IsCalculateHijriAdjustmentOnlie)
+                    {
+                        defaultSettings.IsCalculateHijriAdjustmentOnlie = false;
+                        defaultSettings.Save();
+                        ShowError("ارتباط با اینترنت وجود ندارد!" +
+                            Environment.NewLine +
+                            "تنظیمات مربوط به محاسبه آنلاین اختلاف روز قمری به حالت پیشفرض تغییر نمود!");
+                    }
                 }
             }
             return defaultSettings.HijriAdjustment;
