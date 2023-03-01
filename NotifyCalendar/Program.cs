@@ -16,8 +16,8 @@ namespace NotifyCalendar
         [STAThread]
         static void Main()
         {
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo("fa-ir");
-            Thread.CurrentThread.CurrentCulture = Thread.CurrentThread.CurrentUICulture;
+            //Thread.CurrentThread.CurrentUICulture = new CultureInfo("fa-ir");
+            //Thread.CurrentThread.CurrentCulture = Thread.CurrentThread.CurrentUICulture;
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

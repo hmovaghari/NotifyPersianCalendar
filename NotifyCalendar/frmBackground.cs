@@ -167,6 +167,9 @@ namespace NotifyCalendar
         public MemoryStream GetUICalendarScreenShotStream(CalendarType calendarType, DateTime nowDateTime,
             int? hijriAdjustment = null)
         {
+            var cultureInfo = Persian.Calendar.Library.Calendar.GetCultureInfo(calendarType);
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultureInfo);
+            Thread.CurrentThread.CurrentCulture = Thread.CurrentThread.CurrentUICulture;
             UICalendar uiCalendar = new UICalendar();
             uiCalendar.CalendarType = calendarType;
             uiCalendar.HijriAdjustment = hijriAdjustment;

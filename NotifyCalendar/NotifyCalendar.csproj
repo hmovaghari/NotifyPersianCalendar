@@ -36,8 +36,9 @@
     <ApplicationIcon>Resources\NotifyCalendar.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Persian.Calendar.Library">
-      <HintPath>..\..\Persian.Calendar.Library\Persian.Calendar.Library\bin\Release\Persian.Calendar.Library.dll</HintPath>
+    <Reference Include="Persian.Calendar.Library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Persian.Calendar.Library\Persian.Calendar.Library.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -268,6 +269,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Loading.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Persian.Calendar.Library\Note.txt" />
+    <Content Include="Persian.Calendar.Library\Persian.Calendar.Library.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
