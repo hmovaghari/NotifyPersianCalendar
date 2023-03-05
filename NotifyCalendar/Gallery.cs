@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -93,7 +94,7 @@ namespace NotifyCalendar
 
         internal void ChangeDesktopBackground(List<string> imagePaths)
         {
-            var imagePath = GetRadnomImagePath(imagePaths);
+            string imagePath = GetNexImagePath(imagePaths);
             var _frmBackground = frmBackground.GenerateForm(imagePath);
             if (_frmBackground.Error == null)
             {
@@ -109,11 +110,61 @@ namespace NotifyCalendar
             _frmBackground.Dispose();
         }
 
-        private string GetRadnomImagePath(List<string> imagePath)
+        private string GetNexImagePath(List<string> imagePaths)
+        {
+            var backgroundChangeMode = defaultSettings.BackgroundChangeMode;
+            var currentIndex = defaultSettings.BackgroundIndex;
+            int random = 1;
+            if (backgroundChangeMode == random)
+            {
+                return GetRadnomImagePath(imagePaths, currentIndex);
+            }
+            return GetNextImagePath(imagePaths, currentIndex);
+        }
+
+        private string GetNextImagePath(List<string> imagePaths, int currentIndex)
+        {
+            if (imagePaths.Count <= 1)
+            {
+                return imagePaths[currentIndex];
+            }
+            else if (imagePaths.Count == currentIndex + 1)
+            {
+                currentIndex = 0;
+                SaveBackgroundIndex(currentIndex);
+                return imagePaths[currentIndex];
+            }
+            else
+            {
+                ++currentIndex;
+                SaveBackgroundIndex(currentIndex);
+                return imagePaths[currentIndex];
+            }
+        }
+
+        private void SaveBackgroundIndex(int currentIndex)
+        {
+            defaultSettings.BackgroundIndex = currentIndex;
+            defaultSettings.Save();
+        }
+
+        private string GetRadnomImagePath(List<string> imagePaths, int currentIndex)
         {
             Random random = new Random();
-            var index = random.Next(imagePath.Count);
-            return imagePath[index];
+            var imageCount = imagePaths.Count;
+            var index = 0;
+            while (true)
+            {
+                index = random.Next(imageCount);
+                if (imageCount > 1 && index == currentIndex)
+                {
+                    continue;
+                }
+                break;
+            }
+            defaultSettings.BackgroundIndex = index;
+            defaultSettings.Save();
+            return imagePaths[index];
         }
     }
 }

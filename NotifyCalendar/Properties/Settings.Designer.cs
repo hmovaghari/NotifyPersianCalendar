@@ -189,5 +189,17 @@ namespace NotifyCalendar.Properties {
                 this["BackgroundChangeMode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public int BackgroundIndex {
+            get {
+                return ((int)(this["BackgroundIndex"]));
+            }
+            set {
+                this["BackgroundIndex"] = value;
+            }
+        }
     }
 }

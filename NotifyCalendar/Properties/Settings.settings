@@ -44,5 +44,8 @@
     <Setting Name="BackgroundChangeMode" Type="System.Byte" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
+    <Setting Name="BackgroundIndex" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">-1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

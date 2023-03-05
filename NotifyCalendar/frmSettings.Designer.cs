@@ -45,6 +45,7 @@ namespace NotifyCalendar
             this.chkIsShowHijriCalendar = new System.Windows.Forms.CheckBox();
             this.chkIsShowPersianCalendar = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cmbBackgroundChangeMode = new System.Windows.Forms.ComboBox();
             this.cmbIntervalType = new System.Windows.Forms.ComboBox();
             this.numInterval = new System.Windows.Forms.NumericUpDown();
             this.chkIsTimerOn = new System.Windows.Forms.CheckBox();
@@ -67,7 +68,6 @@ namespace NotifyCalendar
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.folder = new System.Windows.Forms.FolderBrowserDialog();
-            this.cmbBackgroundChangeMode = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabDesktop.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -211,6 +211,19 @@ namespace NotifyCalendar
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "تغییر اوتومات تصاویر";
+            // 
+            // cmbBackgroundChangeMode
+            // 
+            this.cmbBackgroundChangeMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbBackgroundChangeMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBackgroundChangeMode.FormattingEnabled = true;
+            this.cmbBackgroundChangeMode.Items.AddRange(new object[] {
+            "تغییر تصاویر تصادفی باشد",
+            "تغییر تصاویر به ترتیب باشد"});
+            this.cmbBackgroundChangeMode.Location = new System.Drawing.Point(6, 23);
+            this.cmbBackgroundChangeMode.Name = "cmbBackgroundChangeMode";
+            this.cmbBackgroundChangeMode.Size = new System.Drawing.Size(213, 21);
+            this.cmbBackgroundChangeMode.TabIndex = 3;
             // 
             // cmbIntervalType
             // 
@@ -474,20 +487,6 @@ namespace NotifyCalendar
             this.btnSave.Text = "ذخیره";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // cmbBackgroundChangeMode
-            // 
-            this.cmbBackgroundChangeMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmbBackgroundChangeMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbBackgroundChangeMode.FormattingEnabled = true;
-            this.cmbBackgroundChangeMode.Items.AddRange(new object[] {
-            "تغییر تصاویر تصادفی باشد",
-            "تغییر تصاویر تصادفی بدون تکرار باشد",
-            "تغییر تصاویر به ترتیب باشد"});
-            this.cmbBackgroundChangeMode.Location = new System.Drawing.Point(6, 23);
-            this.cmbBackgroundChangeMode.Name = "cmbBackgroundChangeMode";
-            this.cmbBackgroundChangeMode.Size = new System.Drawing.Size(213, 21);
-            this.cmbBackgroundChangeMode.TabIndex = 3;
             // 
             // frmSettings
             // 
