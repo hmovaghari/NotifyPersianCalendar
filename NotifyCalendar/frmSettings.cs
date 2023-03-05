@@ -57,6 +57,7 @@ namespace NotifyCalendar
             chkIsTimerOn.Checked = defaultSettings.IsTimerOn;
             numInterval.Value = defaultSettings.Interval;
             cmbIntervalType.SelectedIndex = defaultSettings.IntervalType - 1;
+            cmbBackgroundChangeMode.SelectedIndex = defaultSettings.BackgroundChangeMode - 1;
 
             cmbBackgroundLocation.SelectedIndex = defaultSettings.BackgroundLocation - 1;
             cmbBackgroundLocation_SelectedIndexChanged(null, null);
@@ -146,8 +147,16 @@ namespace NotifyCalendar
             var isTimerOn = GetIsTimerOnFromCHK();
             numInterval.Value = isTimerOn ? GetIntervalFromNUM() : 0;
             numInterval.Enabled = isTimerOn;
-            cmbIntervalType.SelectedIndex = isTimerOn ? GetIntervalTypeFromCMB() -1 : -1;
+            cmbIntervalType.Enabled = isTimerOn;
+            cmbIntervalType.SelectedIndex = isTimerOn ? GetIntervalTypeFromCMB() - 1 : -1;
+            cmbBackgroundChangeMode.Enabled = isTimerOn;
+            cmbBackgroundChangeMode.SelectedIndex = isTimerOn ? GetBackgroundChangeMode() - 1 : -1;
             cmbCalendarType.Enabled = isTimerOn;
+        }
+
+        private byte GetBackgroundChangeMode()
+        {
+            return (byte)(cmbBackgroundChangeMode.SelectedIndex + 1);
         }
 
         private int GetIntervalFromNUM()
@@ -249,6 +258,7 @@ namespace NotifyCalendar
                 defaultSettings.IsTimerOn = GetIsTimerOnFromCHK();
                 defaultSettings.Interval = GetIntervalFromNUM();
                 defaultSettings.IntervalType = GetIntervalTypeFromCMB();
+                defaultSettings.BackgroundChangeMode = GetBackgroundChangeMode();
                 defaultSettings.IsShowPersianCalendar = chkIsShowPersianCalendar.Checked;
                 defaultSettings.IsShowHijriCalendar = chkIsShowHijriCalendar.Checked;
                 defaultSettings.IsShowGregorianCalendar = chkIsShowGregorianCalendar.Checked;
@@ -269,7 +279,7 @@ namespace NotifyCalendar
             }
 
             
-            if (GetIsTimerOnFromCHK() && (GetIntervalFromNUM() == 0 || GetIntervalTypeFromCMB() == 0))
+            if (GetIsTimerOnFromCHK() && (GetIntervalFromNUM() == 0 || GetIntervalTypeFromCMB() == 0 || GetBackgroundChangeMode() == 0))
             {
                 ShowError(message: "لطفا نحوه‌ی تغییر اوتومات تصاویر را از تب 'پس زمینه' انتخاب نمائید");
                 return false;

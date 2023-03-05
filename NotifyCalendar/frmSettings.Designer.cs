@@ -67,6 +67,7 @@ namespace NotifyCalendar
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.folder = new System.Windows.Forms.FolderBrowserDialog();
+            this.cmbBackgroundChangeMode = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabDesktop.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -200,6 +201,7 @@ namespace NotifyCalendar
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.cmbBackgroundChangeMode);
             this.groupBox4.Controls.Add(this.cmbIntervalType);
             this.groupBox4.Controls.Add(this.numInterval);
             this.groupBox4.Controls.Add(this.chkIsTimerOn);
@@ -473,6 +475,20 @@ namespace NotifyCalendar
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // cmbBackgroundChangeMode
+            // 
+            this.cmbBackgroundChangeMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbBackgroundChangeMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBackgroundChangeMode.FormattingEnabled = true;
+            this.cmbBackgroundChangeMode.Items.AddRange(new object[] {
+            "تغییر تصاویر تصادفی باشد",
+            "تغییر تصاویر تصادفی بدون تکرار باشد",
+            "تغییر تصاویر به ترتیب باشد"});
+            this.cmbBackgroundChangeMode.Location = new System.Drawing.Point(6, 23);
+            this.cmbBackgroundChangeMode.Name = "cmbBackgroundChangeMode";
+            this.cmbBackgroundChangeMode.Size = new System.Drawing.Size(213, 21);
+            this.cmbBackgroundChangeMode.TabIndex = 3;
+            // 
             // frmSettings
             // 
             this.AcceptButton = this.btnSave;
@@ -547,5 +563,6 @@ namespace NotifyCalendar
         private System.Windows.Forms.ComboBox cmbBackgroundLocation;
         private System.Windows.Forms.TabPage tabEvents;
         private System.Windows.Forms.CheckBox chkIsCalculateHijriAdjustmentOnline;
+        private System.Windows.Forms.ComboBox cmbBackgroundChangeMode;
     }
 }
