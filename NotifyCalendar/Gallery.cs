@@ -142,12 +142,6 @@ namespace NotifyCalendar
             }
         }
 
-        private void SaveBackgroundIndex(int currentIndex)
-        {
-            defaultSettings.BackgroundIndex = currentIndex;
-            defaultSettings.Save();
-        }
-
         private string GetRadnomImagePath(List<string> imagePaths, int currentIndex)
         {
             Random random = new Random();
@@ -162,9 +156,14 @@ namespace NotifyCalendar
                 }
                 break;
             }
-            defaultSettings.BackgroundIndex = index;
-            defaultSettings.Save();
+            SaveBackgroundIndex(index);
             return imagePaths[index];
+        }
+
+        private void SaveBackgroundIndex(int currentIndex)
+        {
+            defaultSettings.BackgroundIndex = currentIndex;
+            defaultSettings.Save();
         }
     }
 }
