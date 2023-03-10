@@ -61,6 +61,11 @@ namespace NotifyCalendar
 
             cmbBackgroundLocation.SelectedIndex = defaultSettings.BackgroundLocation - 1;
             cmbBackgroundLocation_SelectedIndexChanged(null, null);
+
+            var backgroundStyles = Enums.GetBackgroundStyleList();
+            cmbBackgroundStyle.DisplayMember = "Name";
+            cmbBackgroundStyle.Items.AddRange(backgroundStyles.ToArray());
+            cmbBackgroundStyle.SelectedIndex = defaultSettings.BackgroundStyle - 1;
         }
 
         private void chkIsOnlineHijriAdjustment_CheckedChanged(object sender, EventArgs e)
@@ -110,6 +115,11 @@ namespace NotifyCalendar
         private byte GetCalendarTypeFromCMB()
         {
             return (byte)(cmbCalendarType.SelectedIndex + 1);
+        }
+
+        private int GetBackgroundStyleFromCMB()
+        {
+            return cmbBackgroundStyle.SelectedIndex + 1;
         }
 
         private void cmbHijriAdjustment_SelectedIndexChanged(object sender, EventArgs e)
@@ -263,6 +273,7 @@ namespace NotifyCalendar
                 defaultSettings.IsShowHijriCalendar = chkIsShowHijriCalendar.Checked;
                 defaultSettings.IsShowGregorianCalendar = chkIsShowGregorianCalendar.Checked;
                 defaultSettings.BackgroundLocation = GetBackgroundLocationFromCMB();
+                defaultSettings.BackgroundStyle = GetBackgroundStyleFromCMB();
                 defaultSettings.Save();
                 DialogResult = DialogResult.OK;
                 btnCancel_Click(null, null);

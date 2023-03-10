@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="CalendarEX.cs" />
     <Compile Include="ChangeBackground.cs" />
+    <Compile Include="Enums.cs" />
     <Compile Include="frmAbount.cs">
       <SubType>Form</SubType>
     </Compile>

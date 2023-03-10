@@ -68,6 +68,8 @@ namespace NotifyCalendar
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.folder = new System.Windows.Forms.FolderBrowserDialog();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.cmbBackgroundStyle = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabDesktop.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -81,6 +83,7 @@ namespace NotifyCalendar
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -94,11 +97,12 @@ namespace NotifyCalendar
             this.tabControl1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.tabControl1.RightToLeftLayout = true;
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(479, 412);
+            this.tabControl1.Size = new System.Drawing.Size(479, 478);
             this.tabControl1.TabIndex = 0;
             // 
             // tabDesktop
             // 
+            this.tabDesktop.Controls.Add(this.groupBox7);
             this.tabDesktop.Controls.Add(this.groupBox6);
             this.tabDesktop.Controls.Add(this.groupBox5);
             this.tabDesktop.Controls.Add(this.groupBox4);
@@ -106,7 +110,7 @@ namespace NotifyCalendar
             this.tabDesktop.Location = new System.Drawing.Point(4, 22);
             this.tabDesktop.Name = "tabDesktop";
             this.tabDesktop.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDesktop.Size = new System.Drawing.Size(471, 386);
+            this.tabDesktop.Size = new System.Drawing.Size(471, 452);
             this.tabDesktop.TabIndex = 1;
             this.tabDesktop.Text = "پس زمینه";
             this.tabDesktop.UseVisualStyleBackColor = true;
@@ -115,7 +119,7 @@ namespace NotifyCalendar
             // 
             this.groupBox6.Controls.Add(this.picBackgroundLocation);
             this.groupBox6.Controls.Add(this.cmbBackgroundLocation);
-            this.groupBox6.Location = new System.Drawing.Point(9, 259);
+            this.groupBox6.Location = new System.Drawing.Point(9, 335);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(451, 107);
             this.groupBox6.TabIndex = 3;
@@ -156,7 +160,7 @@ namespace NotifyCalendar
             this.groupBox5.Controls.Add(this.chkIsShowGregorianCalendar);
             this.groupBox5.Controls.Add(this.chkIsShowHijriCalendar);
             this.groupBox5.Controls.Add(this.chkIsShowPersianCalendar);
-            this.groupBox5.Location = new System.Drawing.Point(9, 180);
+            this.groupBox5.Location = new System.Drawing.Point(9, 256);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(451, 73);
             this.groupBox5.TabIndex = 2;
@@ -446,7 +450,7 @@ namespace NotifyCalendar
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(485, 478);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(485, 544);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // panel1
@@ -454,7 +458,7 @@ namespace NotifyCalendar
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 421);
+            this.panel1.Location = new System.Drawing.Point(3, 487);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(479, 54);
             this.panel1.TabIndex = 1;
@@ -488,13 +492,33 @@ namespace NotifyCalendar
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.cmbBackgroundStyle);
+            this.groupBox7.Location = new System.Drawing.Point(9, 179);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(451, 58);
+            this.groupBox7.TabIndex = 6;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "نمایش تصویر پس زمینه";
+            // 
+            // cmbBackgroundStyle
+            // 
+            this.cmbBackgroundStyle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbBackgroundStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBackgroundStyle.FormattingEnabled = true;
+            this.cmbBackgroundStyle.Location = new System.Drawing.Point(224, 24);
+            this.cmbBackgroundStyle.Name = "cmbBackgroundStyle";
+            this.cmbBackgroundStyle.Size = new System.Drawing.Size(213, 21);
+            this.cmbBackgroundStyle.TabIndex = 4;
+            // 
             // frmSettings
             // 
             this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(485, 478);
+            this.ClientSize = new System.Drawing.Size(485, 544);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -524,6 +548,7 @@ namespace NotifyCalendar
             this.groupBox1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -563,5 +588,7 @@ namespace NotifyCalendar
         private System.Windows.Forms.TabPage tabEvents;
         private System.Windows.Forms.CheckBox chkIsCalculateHijriAdjustmentOnline;
         private System.Windows.Forms.ComboBox cmbBackgroundChangeMode;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.ComboBox cmbBackgroundStyle;
     }
 }

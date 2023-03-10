@@ -99,7 +99,7 @@ namespace NotifyCalendar
             if (_frmBackground.Error == null)
             {
                 var image = _frmBackground.TakeScreenshot();
-                ChangeBackground.Set(image, BackgroundStyle.Stretch);
+                ChangeBackground.Set(image, (BackgroundStyle)defaultSettings.BackgroundStyle);
                 image.Dispose();
             }
             else

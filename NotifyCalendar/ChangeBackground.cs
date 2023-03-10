@@ -65,14 +65,4 @@ namespace NotifyCalendar
             }
         }
     }
-
-    public enum BackgroundStyle : int
-    {
-        Fill,
-        Fit,
-        Stretch,
-        Tile,
-        Center,
-        Span
-    }
 }
