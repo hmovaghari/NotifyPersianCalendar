@@ -19,6 +19,7 @@ namespace NotifyCalendar
         private Calendar calendar = new Calendar();
         private Properties.Settings defaultSettings = Properties.Settings.Default;
         private bool isFirstRun = true;
+        private Guid zeroGuid = new Guid();
 
         public frmMain()
         {
@@ -37,9 +38,24 @@ namespace NotifyCalendar
         {
             HideForm();
             SetRunDate();
+            SetBackgroundLocation();
             StartCalendarTimer();
             StrartBackgroundTimer();
             SetIsFirstRun(false);
+        }
+
+        private void SetBackgroundLocation()
+        {
+            SetBackgroundFilename();
+        }
+
+        private void SetBackgroundFilename()
+        {
+            if (defaultSettings.BackgroundGuidName == zeroGuid)
+            {
+                defaultSettings.BackgroundGuidName = Guid.NewGuid();
+                defaultSettings.Save();
+            }
         }
 
         private void SetIsFirstRun(bool @bool)
@@ -93,11 +109,13 @@ namespace NotifyCalendar
         {
             var gallery = new Gallery();
 
-            List<string> galleryFiles = gallery.GetGalleryFiles();
-
+            var galleryFiles = gallery.GetGalleryFiles();
             CheckGalleryError(gallery);
 
-            gallery.ChangeDesktopBackground(galleryFiles);
+            var backgroundPath = gallery.GetValidBackgroundPath();
+            CheckGalleryError(gallery);
+
+            gallery.ChangeDesktopBackground(backgroundPath, galleryFiles);
 
             CheckGalleryError(gallery);
         }
@@ -251,6 +269,12 @@ namespace NotifyCalendar
         {
             var gallery = new Gallery();
             Process.Start(gallery.GetGalleryPath());
+        }
+
+        private void btnOpenBackgroundDirectory_Click(object sender, EventArgs e)
+        {
+            var gallery = new Gallery();
+            Process.Start(gallery.GenerateBackgroundDirecory());
         }
     }
 }

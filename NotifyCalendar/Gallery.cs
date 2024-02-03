@@ -13,6 +13,7 @@ namespace NotifyCalendar
     {
         private Properties.Settings defaultSettings = Properties.Settings.Default;
         private string defaultGallery = $@"{Directory.GetCurrentDirectory()}\Gallery";
+        private string defaultBackgroundDirecory = $@"{Directory.GetCurrentDirectory()}\Background";
         internal string Error = null;
         internal bool ForceClose = false;
 
@@ -22,7 +23,7 @@ namespace NotifyCalendar
             {
                 if (!defaultSettings.IsDefaultPicturesAlbumPath && !Directory.Exists(defaultSettings.PicturesAlbumPath))
                 {
-                    ChangeToDefaultPath();
+                    ChangeToDefaultAlbumPath();
                     Error = "آلبوم تصاویر یافت نشد" + Environment.NewLine +
                         "آلبوم تصاویر به حالت پیشفرض تغییر نمود";
                 }
@@ -79,7 +80,7 @@ namespace NotifyCalendar
             return galleryFiles;
         }
 
-        private void ChangeToDefaultPath()
+        private void ChangeToDefaultAlbumPath()
         {
             defaultSettings.IsDefaultPicturesAlbumPath = true;
             defaultSettings.PicturesAlbumPath = string.Empty;
@@ -92,14 +93,14 @@ namespace NotifyCalendar
             return Directory.GetFiles(path).Where(x => extensions.Any(y => x.EndsWith(y))).ToList();
         }
 
-        internal void ChangeDesktopBackground(List<string> imagePaths)
+        internal void ChangeDesktopBackground(string backgroundPath, List<string> imagePaths)
         {
             string imagePath = GetNexImagePath(imagePaths);
             var _frmBackground = frmBackground.GenerateForm(imagePath);
             if (_frmBackground.Error == null)
             {
                 var image = _frmBackground.TakeScreenshot();
-                ChangeBackground.Set(image, (BackgroundStyle)defaultSettings.BackgroundStyle);
+                ChangeBackground.Set(backgroundPath, image, (BackgroundStyle)defaultSettings.BackgroundStyle);
                 image.Dispose();
             }
             else
@@ -163,6 +164,41 @@ namespace NotifyCalendar
         private void SaveBackgroundIndex(int currentIndex)
         {
             defaultSettings.BackgroundIndex = currentIndex;
+            defaultSettings.Save();
+        }
+
+        internal string GetValidBackgroundPath()
+        {
+            if (defaultSettings.IsDefaultBackgroundDirectory || !Directory.Exists(defaultSettings.BackgroundDirectory))
+            {
+                if (!defaultSettings.IsDefaultBackgroundDirectory && !Directory.Exists(defaultSettings.BackgroundDirectory))
+                {
+                    ChangeToDefaultBackgroundDirectory();
+                    Error = "مسیر ذخیره پس زمینه یافت نشد" + Environment.NewLine +
+                        "مسیر ذخیره پس زمینه به حالت پیشفرض تغییر نمود";
+                }
+
+                if (!Directory.Exists(defaultBackgroundDirecory))
+                {
+                    Directory.CreateDirectory(defaultBackgroundDirecory);
+                }
+            }
+
+            var imageName = $"Image_{defaultSettings.BackgroundGuidName}.png";
+            var backgroundDirectory = GenerateBackgroundDirecory();
+
+            return $"{backgroundDirectory}\\{imageName}";
+        }
+
+        internal string GenerateBackgroundDirecory()
+        {
+            return defaultSettings.IsDefaultBackgroundDirectory ? defaultBackgroundDirecory : defaultSettings.BackgroundDirectory;
+        }
+
+        private void ChangeToDefaultBackgroundDirectory()
+        {
+            defaultSettings.IsDefaultBackgroundDirectory = true;
+            defaultSettings.BackgroundDirectory = string.Empty;
             defaultSettings.Save();
         }
     }

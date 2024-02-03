@@ -1,4 +1,6 @@
 ﻿using Microsoft.Win32;
+using System;
+using System.CodeDom;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -8,8 +10,6 @@ namespace NotifyCalendar
 {
     public static class ChangeBackground
     {
-        private static string currentDirectory = Directory.GetCurrentDirectory();
-
         const int SPI_SETDESKWALLPAPER = 20;
         const int SPIF_UPDATEINIFILE = 0x01;
         const int SPIF_SENDWININICHANGE = 0x02;
@@ -17,13 +17,11 @@ namespace NotifyCalendar
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         static extern int SystemParametersInfo(int uAction, int uParam, string lpvParam, int fuWinIni);
 
-        public static void Set(Image image, BackgroundStyle backgroundStyle)
+        public static void Set(string backgroundPath, Image image, BackgroundStyle backgroundStyle)
         {
-            var path = currentDirectory + @"\Image.png";
-
             try
             {
-                image.Save(path);//ToDo ExternalException (0x80004005) A generic error occurred in GDI+
+                image.Save(backgroundPath);//ToDo ExternalException (0x80004005) A generic error occurred in GDI+
 
                 var key = Registry.CurrentUser.OpenSubKey(@"Control Panel\Desktop", true);
 
@@ -57,7 +55,7 @@ namespace NotifyCalendar
                         break;
                 }
 
-                SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, path, SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);
+                SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, backgroundPath, SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);
             }
             catch (ExternalException e)
             {

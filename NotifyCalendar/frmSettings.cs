@@ -51,7 +51,7 @@ namespace NotifyCalendar
             chkIsShowGregorianCalendar.Checked = defaultSettings.IsShowGregorianCalendar;
             
             chkDefaultPicturesAlbumPath.Checked = defaultSettings.IsDefaultPicturesAlbumPath;
-            folder.SelectedPath = defaultSettings.PicturesAlbumPath;
+            folderPicturesAlbum.SelectedPath = defaultSettings.PicturesAlbumPath;
             chkDefaultPicturesAlbumPath_CheckedChanged(null, null);
 
             chkIsTimerOn.Checked = defaultSettings.IsTimerOn;
@@ -66,6 +66,10 @@ namespace NotifyCalendar
             cmbBackgroundStyle.DisplayMember = "Name";
             cmbBackgroundStyle.Items.AddRange(backgroundStyles.ToArray());
             cmbBackgroundStyle.SelectedIndex = defaultSettings.BackgroundStyle - 1;
+
+            chkDefaultBackgroundDirectory.Checked = defaultSettings.IsDefaultBackgroundDirectory;
+            folderBackground.SelectedPath = defaultSettings.BackgroundDirectory;
+            chkDefaultBackgroundDirectory_CheckedChanged(null, null);
         }
 
         private void chkIsOnlineHijriAdjustment_CheckedChanged(object sender, EventArgs e)
@@ -139,12 +143,12 @@ namespace NotifyCalendar
             txtPicturesAlbumPath.Enabled = !GetIsDefaultPicturesAlbumPathFromCHK();
             var selectedPath = GetSelectedPicturesAlbumPathFromFolderDialog();
             txtPicturesAlbumPath.Text = selectedPath;
-            folder.SelectedPath = selectedPath;
+            folderPicturesAlbum.SelectedPath = selectedPath;
         }
 
         private string GetSelectedPicturesAlbumPathFromFolderDialog()
         {
-            return txtPicturesAlbumPath.Enabled ? folder.SelectedPath : string.Empty;
+            return txtPicturesAlbumPath.Enabled ? folderPicturesAlbum.SelectedPath : string.Empty;
         }
 
         private bool GetIsDefaultPicturesAlbumPathFromCHK()
@@ -184,9 +188,9 @@ namespace NotifyCalendar
             return chkIsTimerOn.Checked;
         }
 
-        private void btnBrowse_Click(object sender, EventArgs e)
+        private void btnBrowsePicturesAlbumPath_Click(object sender, EventArgs e)
         {
-            var result = folder.ShowDialog();
+            var result = folderPicturesAlbum.ShowDialog();
             
             if (result == DialogResult.OK)
             {
@@ -274,6 +278,8 @@ namespace NotifyCalendar
                 defaultSettings.IsShowGregorianCalendar = chkIsShowGregorianCalendar.Checked;
                 defaultSettings.BackgroundLocation = GetBackgroundLocationFromCMB();
                 defaultSettings.BackgroundStyle = GetBackgroundStyleFromCMB();
+                defaultSettings.IsDefaultBackgroundDirectory = GetIsDefaultBackgroundDirectoryCHK();
+                defaultSettings.BackgroundDirectory = GetSelectedBackgroundDirectoryFromFolderDialog();
                 defaultSettings.Save();
                 DialogResult = DialogResult.OK;
                 btnCancel_Click(null, null);
@@ -282,10 +288,17 @@ namespace NotifyCalendar
 
         private bool ControlData()
         {
-            var selectedPath = GetSelectedPicturesAlbumPathFromFolderDialog();
-            if (!GetIsDefaultPicturesAlbumPathFromCHK() && (string.IsNullOrEmpty(selectedPath) || !Directory.Exists(selectedPath)))
+            var selectedAlbumPath = GetSelectedPicturesAlbumPathFromFolderDialog();
+            if (!GetIsDefaultPicturesAlbumPathFromCHK() && (string.IsNullOrEmpty(selectedAlbumPath) || !Directory.Exists(selectedAlbumPath)))
             {
                 ShowError(message: "لطفا مسیر آلبوم تصاویر را از تب 'پس زمینه' انتخاب نمائید");
+                return false;
+            }
+
+            var selectedBackgroundFolder = GetSelectedBackgroundDirectoryFromFolderDialog();
+            if (!GetIsDefaultBackgroundDirectoryCHK() && (string.IsNullOrEmpty(selectedBackgroundFolder) || !Directory.Exists(selectedBackgroundFolder)))
+            {
+                ShowError(message: "لطفا مسیر ذخیره پس زمینه را از تب 'پس زمینه' انتخاب نمائید");
                 return false;
             }
 
@@ -318,6 +331,35 @@ namespace NotifyCalendar
                 DialogResult = DialogResult.Cancel;
             }
             this.Close();
+        }
+
+        private void btnBackgroundDirectory_Click(object sender, EventArgs e)
+        {
+            var result = folderBackground.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                chkDefaultBackgroundDirectory.Checked = false;
+                chkDefaultBackgroundDirectory_CheckedChanged(null, null);
+            }
+        }
+
+        private void chkDefaultBackgroundDirectory_CheckedChanged(object sender, EventArgs e)
+        {
+            txtBackgroundDirectory.Enabled = !GetIsDefaultBackgroundDirectoryCHK();
+            var selectedPath = GetSelectedBackgroundDirectoryFromFolderDialog();
+            txtBackgroundDirectory.Text = selectedPath;
+            folderBackground.SelectedPath = selectedPath;
+        }
+
+        private string GetSelectedBackgroundDirectoryFromFolderDialog()
+        {
+            return txtBackgroundDirectory.Enabled ? folderBackground.SelectedPath : string.Empty;
+        }
+
+        private bool GetIsDefaultBackgroundDirectoryCHK()
+        {
+            return chkDefaultBackgroundDirectory.Checked;
         }
     }
 }
