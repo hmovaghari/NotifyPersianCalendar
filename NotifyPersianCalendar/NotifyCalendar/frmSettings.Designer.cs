@@ -70,6 +70,9 @@ namespace  NotifyPersianCalendar
             this.lblHijriAdjustment = new System.Windows.Forms.Label();
             this.cmbHijriAdjustment = new System.Windows.Forms.ComboBox();
             this.tabEvents = new System.Windows.Forms.TabPage();
+            this.tabGeneral = new System.Windows.Forms.TabPage();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.chkIsCheckUpdateAtStart = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -89,6 +92,8 @@ namespace  NotifyPersianCalendar
             this.tabCalendar.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabGeneral.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -98,6 +103,7 @@ namespace  NotifyPersianCalendar
             this.tabControl1.Controls.Add(this.tabDesktop);
             this.tabControl1.Controls.Add(this.tabCalendar);
             this.tabControl1.Controls.Add(this.tabEvents);
+            this.tabControl1.Controls.Add(this.tabGeneral);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(3, 3);
             this.tabControl1.Name = "tabControl1";
@@ -525,6 +531,39 @@ namespace  NotifyPersianCalendar
             this.tabEvents.TabIndex = 2;
             this.tabEvents.Text = "رویدادها";
             // 
+            // tabGeneral
+            // 
+            this.tabGeneral.BackColor = System.Drawing.SystemColors.Control;
+            this.tabGeneral.Controls.Add(this.groupBox9);
+            this.tabGeneral.Location = new System.Drawing.Point(4, 22);
+            this.tabGeneral.Name = "tabGeneral";
+            this.tabGeneral.Size = new System.Drawing.Size(471, 543);
+            this.tabGeneral.TabIndex = 3;
+            this.tabGeneral.Text = "تنظیمات عمومی";
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox9.Controls.Add(this.chkIsCheckUpdateAtStart);
+            this.groupBox9.Location = new System.Drawing.Point(5, 14);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(451, 57);
+            this.groupBox9.TabIndex = 1;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "تنظیمات اجرایی هنگام شروع نرم‌افزار";
+            // 
+            // chkIsCheckUpdateAtStart
+            // 
+            this.chkIsCheckUpdateAtStart.AccessibleDescription = "";
+            this.chkIsCheckUpdateAtStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkIsCheckUpdateAtStart.AutoSize = true;
+            this.chkIsCheckUpdateAtStart.Location = new System.Drawing.Point(349, 25);
+            this.chkIsCheckUpdateAtStart.Name = "chkIsCheckUpdateAtStart";
+            this.chkIsCheckUpdateAtStart.Size = new System.Drawing.Size(88, 17);
+            this.chkIsCheckUpdateAtStart.TabIndex = 0;
+            this.chkIsCheckUpdateAtStart.Text = "بررسی آپدیت";
+            this.chkIsCheckUpdateAtStart.UseVisualStyleBackColor = true;
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
@@ -616,6 +655,9 @@ namespace  NotifyPersianCalendar
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabGeneral.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -665,5 +707,8 @@ namespace  NotifyPersianCalendar
         private System.Windows.Forms.FolderBrowserDialog folderBackground;
         private System.Windows.Forms.CheckBox chkDefaultBackgroundDirectory;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TabPage tabGeneral;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.CheckBox chkIsCheckUpdateAtStart;
     }
 }

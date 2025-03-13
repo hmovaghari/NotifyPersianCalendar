@@ -29,14 +29,8 @@ namespace  NotifyPersianCalendar
 
         private void frmSettings_Load(object sender, EventArgs e)
         {
-            FixFormSize();
+            this.FixFormSize();
             LoadData();
-        }
-
-        private void FixFormSize()
-        {
-            MinimumSize = Size;
-            MaximumSize = Size;
         }
 
         private void LoadData()
@@ -70,6 +64,8 @@ namespace  NotifyPersianCalendar
             chkDefaultBackgroundDirectory.Checked = defaultSettings.IsDefaultBackgroundDirectory;
             folderBackground.SelectedPath = defaultSettings.BackgroundDirectory;
             chkDefaultBackgroundDirectory_CheckedChanged(null, null);
+
+            chkIsCheckUpdateAtStart.Checked = defaultSettings.IsCheckUpdateAtStart;
         }
 
         private void chkIsOnlineHijriAdjustment_CheckedChanged(object sender, EventArgs e)
@@ -280,10 +276,16 @@ namespace  NotifyPersianCalendar
                 defaultSettings.BackgroundStyle = GetBackgroundStyleFromCMB();
                 defaultSettings.IsDefaultBackgroundDirectory = GetIsDefaultBackgroundDirectoryCHK();
                 defaultSettings.BackgroundDirectory = GetSelectedBackgroundDirectoryFromFolderDialog();
+                defaultSettings.IsCheckUpdateAtStart = GetIsCheckUpdateAtStart();
                 defaultSettings.Save();
                 DialogResult = DialogResult.OK;
                 btnCancel_Click(null, null);
             }
+        }
+
+        private bool GetIsCheckUpdateAtStart()
+        {
+            return chkIsCheckUpdateAtStart.Checked;
         }
 
         private bool ControlData()

@@ -249,5 +249,17 @@ namespace NotifyPersianCalendar.Properties {
                 this["BackgroundDirectory"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool IsCheckUpdateAtStart {
+            get {
+                return ((bool)(this["IsCheckUpdateAtStart"]));
+            }
+            set {
+                this["IsCheckUpdateAtStart"] = value;
+            }
+        }
     }
 }

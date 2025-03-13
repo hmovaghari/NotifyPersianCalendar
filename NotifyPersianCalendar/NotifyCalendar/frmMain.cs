@@ -37,11 +37,21 @@ namespace  NotifyPersianCalendar
         private void frmMain_Load(object sender, EventArgs e)
         {
             HideForm();
+            CheckUpdate(isRunNewForm: false);
             SetRunDate();
             SetBackgroundLocation();
             StartCalendarTimer();
             StrartBackgroundTimer();
             SetIsFirstRun(false);
+        }
+
+        private void CheckUpdate(bool isRunNewForm)
+        {
+            var _frmUpdate = frmUpdate.GetInstance(isRunNewForm);
+            if (_frmUpdate != null)
+            {
+                _frmUpdate.ShowOnTop();
+            }
         }
 
         private void SetBackgroundLocation()
@@ -247,13 +257,13 @@ namespace  NotifyPersianCalendar
         {
             calendar.SelectedDateTime = DateTime.Now;
             var isCalculateHijriAdjustmentOffline = GetIsCalculateHijriAdjustmentOnlie() == false;
-            frmSettings frmSettings = new frmSettings(calendar);
+            frmSettings _frmSettings = new frmSettings(calendar);
             notify.ContextMenuStrip.Enabled = false;
             if (defaultSettings.IsTimerOn)
             {
                 backgroundTimer.Stop();
             }
-            var result = frmSettings.ShowDialog();
+            var result = _frmSettings.ShowDialog();
             notify.ContextMenuStrip.Enabled = true;
             if (result == DialogResult.OK)
             {
@@ -262,7 +272,7 @@ namespace  NotifyPersianCalendar
                 StrartBackgroundTimer();
                 SetIsFirstRun(false);
             }
-            frmSettings.Dispose();
+            _frmSettings.Dispose();
         }
 
         private void btnOpenAlbum_Click(object sender, EventArgs e)
@@ -275,6 +285,11 @@ namespace  NotifyPersianCalendar
         {
             var gallery = new Gallery();
             Process.Start(gallery.GenerateBackgroundDirecory());
+        }
+
+        private void btnCheckUpdate_Click(object sender, EventArgs e)
+        {
+            CheckUpdate(isRunNewForm: true);
         }
     }
 }

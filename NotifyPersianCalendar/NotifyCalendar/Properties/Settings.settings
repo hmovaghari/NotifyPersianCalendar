@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="NotifyPersianCalendarProperties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="NotifyPersianCalendar.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="RunDate" Type="System.DateTime" Scope="User">
@@ -58,6 +58,9 @@
     </Setting>
     <Setting Name="BackgroundDirectory" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="IsCheckUpdateAtStart" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>
