@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EBDD264A-6E0E-4191-B585-46DAE69E5085}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>NotifyPersianCalendar</RootNamespace>
+    <AssemblyName>NotifyPersianCalendar</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>NotifyPersianCalendar.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FarsiLibrary.Localization, Version=2.7.0.0, Culture=neutral, PublicKeyToken=def7c46cace23f8f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Farsi.Library.Win.2.7.0\lib\net46\FarsiLibrary.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="FarsiLibrary.Utils, Version=2.7.0.0, Culture=neutral, PublicKeyToken=def7c46cace23f8f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Farsi.Library.Win.2.7.0\lib\net46\FarsiLibrary.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="FarsiLibrary.Win, Version=2.7.0.0, Culture=neutral, PublicKeyToken=def7c46cace23f8f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Farsi.Library.Win.2.7.0\lib\net46\FarsiLibrary.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="Persian.Calendar.Library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Persian.Calendar.Library\Persian.Calendar.Library.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CalendarEX.cs" />
+    <Compile Include="ChangeBackground.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="frmAbount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAbount.Designer.cs">
+      <DependentUpon>frmAbount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBackground.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmBackground.Designer.cs">
+      <DependentUpon>frmBackground.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPleaseWait.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPleaseWait.Designer.cs">
+      <DependentUpon>frmPleaseWait.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSettings.Designer.cs">
+      <DependentUpon>frmSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gallery.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAbount.resx">
+      <DependentUpon>frmAbount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBackground.resx">
+      <DependentUpon>frmBackground.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPleaseWait.resx">
+      <DependentUpon>frmPleaseWait.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSettings.resx">
+      <DependentUpon>frmSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NotifyCalendar.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D31.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D01.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D02.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D03.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D04.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D05.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D06.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D07.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D08.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D09.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D10.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D11.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D12.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D13.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D14.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D15.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D17.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D18.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D19.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D20.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D21.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D22.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D23.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D24.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D25.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D26.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D27.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D28.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D29.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\D30.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Browse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FlowerInWomanHands.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gratisography-301H.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Desktop1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Desktop2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Desktop3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Desktop4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Desktop5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Desktop6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Desktop7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Desktop8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Desktop0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\github.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Loading.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NotifyPersianCalendar.ico" />
+    <Content Include="Persian.Calendar.Library\Note.txt" />
+    <Content Include="Persian.Calendar.Library\Persian.Calendar.Library.dll" />
+    <None Include="Resources\NotifyPersianCalendar.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
