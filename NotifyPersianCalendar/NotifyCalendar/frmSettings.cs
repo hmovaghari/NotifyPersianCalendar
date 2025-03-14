@@ -68,7 +68,7 @@ namespace  NotifyPersianCalendar
             chkIsCheckUpdateAtStart.Checked = defaultSettings.IsCheckUpdateAtStart;
         }
 
-        private void chkIsOnlineHijriAdjustment_CheckedChanged(object sender, EventArgs e)
+        private async void chkIsOnlineHijriAdjustment_CheckedChanged(object sender, EventArgs e)
         {
             var isOnline = GetIsCalculateHijriAdjustmentOnlineFromCHK();
             cmbHijriAdjustment.Enabled = !isOnline;
@@ -80,7 +80,7 @@ namespace  NotifyPersianCalendar
                 var onlineijriAdjustmen = new int?();
                 try
                 {
-                    onlineijriAdjustmen = Calendar.GetHijriAdjustmentOnline(DateTime.Now);
+                    onlineijriAdjustmen = await GetHijriAdjustmentOnline();
                 }
                 catch {}
                 SendKeys.SendWait("{Esc}");//Close _frmPleaseWait
@@ -99,6 +99,11 @@ namespace  NotifyPersianCalendar
                     TopMost = true;
                 }
             }
+        }
+
+        private static async Task<int?> GetHijriAdjustmentOnline()
+        {
+            return await Calendar.GetHijriAdjustmentOnline(DateTime.Now);
         }
 
         private bool GetIsCalculateHijriAdjustmentOnlineFromCHK()

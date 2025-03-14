@@ -1,4 +1,6 @@
 ﻿
+using System.Threading.Tasks;
+
 namespace  NotifyPersianCalendar
 {
     partial class frmSettings
@@ -32,7 +34,7 @@ namespace  NotifyPersianCalendar
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        private async Task InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSettings));
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -487,11 +489,11 @@ namespace  NotifyPersianCalendar
             this.chkIsCalculateHijriAdjustmentOnline.AccessibleDescription = "";
             this.chkIsCalculateHijriAdjustmentOnline.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkIsCalculateHijriAdjustmentOnline.AutoSize = true;
-            this.chkIsCalculateHijriAdjustmentOnline.Location = new System.Drawing.Point(6, 21);
+            this.chkIsCalculateHijriAdjustmentOnline.Location = new System.Drawing.Point(5, 21);
             this.chkIsCalculateHijriAdjustmentOnline.Name = "chkIsCalculateHijriAdjustmentOnline";
-            this.chkIsCalculateHijriAdjustmentOnline.Size = new System.Drawing.Size(199, 17);
+            this.chkIsCalculateHijriAdjustmentOnline.Size = new System.Drawing.Size(211, 17);
             this.chkIsCalculateHijriAdjustmentOnline.TabIndex = 4;
-            this.chkIsCalculateHijriAdjustmentOnline.Text = "اختلاف روز بصورت آنلاین محاسبه شود";
+            this.chkIsCalculateHijriAdjustmentOnline.Text = "اختلاف روز از سایت time.ir محاسبه شود";
             this.chkIsCalculateHijriAdjustmentOnline.UseVisualStyleBackColor = true;
             this.chkIsCalculateHijriAdjustmentOnline.CheckedChanged += new System.EventHandler(this.chkIsOnlineHijriAdjustment_CheckedChanged);
             // 

@@ -181,13 +181,13 @@ namespace  NotifyPersianCalendar
             //}
         }
 
-        private void GetDate()
+        private async Task GetDate()
         {
             calendar.SelectedDateTime = DateTime.Now;
-            calendar.HijriAdjustment = GetHijriAdjustment();
+            calendar.HijriAdjustment = await GetHijriAdjustment();
         }
 
-        private int GetHijriAdjustment()
+        private async Task<int> GetHijriAdjustment()
         {
             if (GetIsCalculateHijriAdjustmentOnlie() &&
                 (
@@ -195,7 +195,7 @@ namespace  NotifyPersianCalendar
                     calendar.SelectedDateTime >= defaultSettings.RunDate.AddDays(1))
                 )
             {
-                var hijriAdjustmentOnjline = calendar.GetHijriAdjustmentOnlie();
+                var hijriAdjustmentOnjline = await calendar.GetHijriAdjustmentOnlie();
                 if (hijriAdjustmentOnjline != null)
                 {
                     defaultSettings.HijriAdjustment = (int)hijriAdjustmentOnjline;

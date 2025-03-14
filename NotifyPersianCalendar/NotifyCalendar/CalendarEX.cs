@@ -19,12 +19,12 @@ namespace  NotifyPersianCalendar
             return result.ToString();
         }
 
-        internal static int? GetHijriAdjustmentOnlie(this Calendar calendar)
+        internal static async Task<int?> GetHijriAdjustmentOnlie(this Calendar calendar)
         {
             var hijriAdjustmentOnjline = new int?();
             try
             {
-                hijriAdjustmentOnjline = Calendar.GetHijriAdjustmentOnline(calendar.SelectedDateTime);
+                hijriAdjustmentOnjline = await Calendar.GetHijriAdjustmentOnline(calendar.SelectedDateTime);
             }
             catch { }
             return hijriAdjustmentOnjline;
