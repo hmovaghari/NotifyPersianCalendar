@@ -78,6 +78,12 @@
     <Compile Include="frmBackground.Designer.cs">
       <DependentUpon>frmBackground.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmConvert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConvert.Designer.cs">
+      <DependentUpon>frmConvert.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +111,9 @@
     <Compile Include="Gallery.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StaticForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="TimeOutWebClient.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -113,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmBackground.resx">
       <DependentUpon>frmBackground.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConvert.resx">
+      <DependentUpon>frmConvert.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>

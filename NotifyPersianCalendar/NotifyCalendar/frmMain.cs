@@ -291,5 +291,11 @@ namespace  NotifyPersianCalendar
         {
             CheckUpdate(isRunNewForm: true);
         }
+
+        private void btnDateConvert_Click(object sender, EventArgs e)
+        {
+            var _frmConvert = frmConvert.GetInstance();
+            _frmConvert.Show();
+        }
     }
 }

@@ -19,7 +19,7 @@ namespace  NotifyPersianCalendar
     {
         static frmBackground sForm;
         private Properties.Settings defaultSettings = Properties.Settings.Default;
-        private string currentDirectory = Directory.GetCurrentDirectory();
+        private static string currentDirectory = Directory.GetCurrentDirectory();
         private Image background = null;
         private Image CalendarImage1 = null;
         private Image CalendarImage2 = null;
@@ -144,13 +144,11 @@ namespace  NotifyPersianCalendar
             }
         }
 
-        private int SetImageForPictureBox(out Image calendarImage, List<PictureBox> pictureBoxes, DateTime nowDateTime, int index,
+        public int SetImageForPictureBox(out Image calendarImage, List<PictureBox> pictureBoxes, DateTime nowDateTime, int index,
             CalendarType calendarType, int? hijriAdjustment = null)
         {
             ++index;
-            string imagePath = $@"{currentDirectory}\Calendar{index}.png";
-            var stream = GetUICalendarScreenShotStream(calendarType, nowDateTime, hijriAdjustment);
-            calendarImage = Image.FromStream(stream);
+            calendarImage = SetImageForPictureBoxStatic(nowDateTime, index, calendarType, hijriAdjustment);
             if (calendarImage != null)
             {
                 pictureBoxes[index].Image = calendarImage;
@@ -164,7 +162,14 @@ namespace  NotifyPersianCalendar
             return index;
         }
 
-        public MemoryStream GetUICalendarScreenShotStream(CalendarType calendarType, DateTime nowDateTime,
+        public static Image SetImageForPictureBoxStatic(DateTime nowDateTime, int index, CalendarType calendarType, int? hijriAdjustment = null)
+        {
+            string imagePath = $@"{currentDirectory}\Calendar{index}.png";
+            var stream = GetUICalendarScreenShotStream(calendarType, nowDateTime, hijriAdjustment);
+            return Image.FromStream(stream);
+        }
+
+        public static MemoryStream GetUICalendarScreenShotStream(CalendarType calendarType, DateTime nowDateTime,
             int? hijriAdjustment = null)
         {
             var cultureInfo = Persian.Calendar.Library.Calendar.GetCultureInfo(calendarType);
