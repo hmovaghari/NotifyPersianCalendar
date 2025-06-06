@@ -126,6 +126,7 @@
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(385, 359);
             this.Name = "frmConvert";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "تبدیل تاریخ";
             this.Load += new System.EventHandler(this.frmConvert_Load);
