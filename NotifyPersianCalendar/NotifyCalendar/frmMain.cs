@@ -20,6 +20,7 @@ namespace  NotifyPersianCalendar
         private Properties.Settings defaultSettings = Properties.Settings.Default;
         private bool isFirstRun = true;
         private Guid zeroGuid = new Guid();
+        internal static Guid BackgroundFilename { get; set; }
 
         public frmMain()
         {
@@ -39,7 +40,6 @@ namespace  NotifyPersianCalendar
             HideForm();
             CheckUpdate(isRunNewForm: false);
             SetRunDate();
-            SetBackgroundLocation();
             StartCalendarTimer();
             StrartBackgroundTimer();
             SetIsFirstRun(false);
@@ -51,20 +51,6 @@ namespace  NotifyPersianCalendar
             if (_frmUpdate != null)
             {
                 _frmUpdate.ShowOnTop();
-            }
-        }
-
-        private void SetBackgroundLocation()
-        {
-            SetBackgroundFilename();
-        }
-
-        private void SetBackgroundFilename()
-        {
-            if (defaultSettings.BackgroundGuidName == zeroGuid)
-            {
-                defaultSettings.BackgroundGuidName = Guid.NewGuid();
-                defaultSettings.Save();
             }
         }
 
@@ -119,6 +105,8 @@ namespace  NotifyPersianCalendar
         {
             var gallery = new Gallery();
 
+            BackgroundFilename = Guid.NewGuid();
+
             var galleryFiles = gallery.GetGalleryFiles();
             CheckGalleryError(gallery);
 
@@ -126,6 +114,8 @@ namespace  NotifyPersianCalendar
             CheckGalleryError(gallery);
 
             gallery.ChangeDesktopBackground(backgroundPath, galleryFiles);
+
+            gallery.DeleteBackgroundFile(backgroundPath);
 
             CheckGalleryError(gallery);
         }

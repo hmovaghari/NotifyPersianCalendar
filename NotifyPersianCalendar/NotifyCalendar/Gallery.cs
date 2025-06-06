@@ -184,7 +184,7 @@ namespace  NotifyPersianCalendar
                 }
             }
 
-            var imageName = $"Image_{defaultSettings.BackgroundGuidName}.png";
+            var imageName = $"Image_{frmMain.BackgroundFilename}.png";
             var backgroundDirectory = GenerateBackgroundDirecory();
 
             return $"{backgroundDirectory}\\{imageName}";
@@ -200,6 +200,15 @@ namespace  NotifyPersianCalendar
             defaultSettings.IsDefaultBackgroundDirectory = true;
             defaultSettings.BackgroundDirectory = string.Empty;
             defaultSettings.Save();
+        }
+
+        internal void DeleteBackgroundFile(string backgroundPath)
+        {
+            try
+            {
+                File.Delete(backgroundPath);
+            }
+            catch { }
         }
     }
 }
