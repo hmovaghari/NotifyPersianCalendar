@@ -90,7 +90,7 @@ namespace NotifyPersianCalendar
             {
                 using (TimeOutWebClient client = new TimeOutWebClient())
                 {
-                    var contents = client.DownloadString("http://hmovaghari.github.io/root/NotifyPersianCalendar/FramworkApp.Update.txt").Split('\n').ToList();
+                    var contents = client.DownloadString("http://hmovaghari.ir/root/NotifyPersianCalendar/FramworkApp.Update.txt").Split('\n').ToList();
                     if (version != contents[0])
                     {
                         return contents;
