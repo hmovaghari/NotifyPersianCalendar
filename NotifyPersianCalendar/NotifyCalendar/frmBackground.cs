@@ -175,15 +175,17 @@ namespace  NotifyPersianCalendar
             var cultureInfo = Persian.Calendar.Library.Calendar.GetCultureInfo(calendarType);
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultureInfo);
             Thread.CurrentThread.CurrentCulture = Thread.CurrentThread.CurrentUICulture;
-            UICalendar uiCalendar = new UICalendar();
-            uiCalendar.CalendarType = calendarType;
-            uiCalendar.HijriAdjustment = hijriAdjustment;
-            uiCalendar.SelectedDateTime = nowDateTime;
-            var image = uiCalendar.GetScreenShot();
-            var imageConverter = new ImageConverter();
-            var bytes = (byte[])imageConverter.ConvertTo(image, typeof(byte[]));
-            var stream = new MemoryStream(bytes);
-            uiCalendar.Dispose();
+            MemoryStream stream;
+            using (var uiCalendar = new UICalendar())
+            {
+                uiCalendar.CalendarType = calendarType;
+                uiCalendar.HijriAdjustment = hijriAdjustment;
+                uiCalendar.SelectedDateTime = nowDateTime;
+                var image = uiCalendar.GetScreenShot();
+                var imageConverter = new ImageConverter();
+                var bytes = (byte[])imageConverter.ConvertTo(image, typeof(byte[]));
+                stream = new MemoryStream(bytes);
+            }
             return stream;
         }
     }
