@@ -252,22 +252,23 @@ namespace  NotifyPersianCalendar
         {
             calendar.SelectedDateTime = DateTime.Now;
             var isCalculateHijriAdjustmentOffline = GetIsCalculateHijriAdjustmentOnlie() == false;
-            frmSettings _frmSettings = new frmSettings(calendar);
-            notify.ContextMenuStrip.Enabled = false;
-            if (defaultSettings.IsTimerOn)
+            using (var _frmSettings = new frmSettings(calendar))
             {
-                backgroundTimer.Stop();
+                notify.ContextMenuStrip.Enabled = false;
+                if (defaultSettings.IsTimerOn)
+                {
+                    backgroundTimer.Stop();
+                }
+                var result = _frmSettings.ShowDialog();
+                notify.ContextMenuStrip.Enabled = true;
+                if (result == DialogResult.OK)
+                {
+                    SetIsFirstRun(isCalculateHijriAdjustmentOffline && GetIsCalculateHijriAdjustmentOnlie());
+                    LoadCalendar(null, null);
+                    StrartBackgroundTimer();
+                    SetIsFirstRun(false);
+                }
             }
-            var result = _frmSettings.ShowDialog();
-            notify.ContextMenuStrip.Enabled = true;
-            if (result == DialogResult.OK)
-            {
-                SetIsFirstRun(isCalculateHijriAdjustmentOffline && GetIsCalculateHijriAdjustmentOnlie());
-                LoadCalendar(null, null);
-                StrartBackgroundTimer();
-                SetIsFirstRun(false);
-            }
-            _frmSettings.Dispose();
         }
 
         private void btnOpenAlbum_Click(object sender, EventArgs e)

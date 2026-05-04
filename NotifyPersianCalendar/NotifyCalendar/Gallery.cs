@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace  NotifyPersianCalendar
 {
@@ -96,19 +94,28 @@ namespace  NotifyPersianCalendar
         internal void ChangeDesktopBackground(string backgroundPath, List<string> imagePaths)
         {
             string imagePath = GetNexImagePath(imagePaths);
-            var _frmBackground = frmBackground.GenerateForm(imagePath);
-            if (_frmBackground.Error == null)
+            try
             {
-                var image = _frmBackground.TakeScreenshot();
-                ChangeBackground.Set(backgroundPath, image, (BackgroundStyle)defaultSettings.BackgroundStyle);
-                image.Dispose();
+                using (var _frmBackground = frmBackground.GenerateForm(imagePath))
+                {
+                    if (_frmBackground.Error == null)
+                    {
+                        using (var image = _frmBackground.TakeScreenshot())
+                        {
+                            ChangeBackground.Set(backgroundPath, image, (BackgroundStyle)defaultSettings.BackgroundStyle);
+                        }
+                    }
+                    else
+                    {
+                        Error = _frmBackground.Error;
+                        ForceClose = _frmBackground.ForseClose;
+                    }
+                }
             }
-            else
+            catch (OutOfMemoryException outOfMemoryException)
             {
-                Error = _frmBackground.Error;
-                ForceClose = _frmBackground.ForseClose;
+                Application.Restart();
             }
-            _frmBackground.Dispose();
         }
 
         private string GetNexImagePath(List<string> imagePaths)
