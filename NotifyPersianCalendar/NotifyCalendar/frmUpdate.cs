@@ -60,11 +60,14 @@ namespace NotifyPersianCalendar
             }
             else if (isNeedUpdate[0] == NoConnection)
             {
-                sForm.lblUpdated.Visible = false;
-                sForm.lblNeedUpdate.Visible = false;
-                sForm.lblNoConnection.Visible = true;
-                sForm.btnGetUpdate.Enabled = false;
-                return true;
+                if (isCallForm || (frmMain.IsFirstRun && isCheckUpdateYes))
+                {
+                    sForm.lblUpdated.Visible = false;
+                    sForm.lblNeedUpdate.Visible = false;
+                    sForm.lblNoConnection.Visible = true;
+                    sForm.btnGetUpdate.Enabled = false;
+                    return true;
+                }
             }
             else if ((isNeedUpdate?.Count ?? 0) >= 2)
             {

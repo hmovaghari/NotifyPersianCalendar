@@ -19,7 +19,7 @@ namespace  NotifyPersianCalendar
         internal static string OldBackgroundPath { get; set; }
         private Calendar calendar = new Calendar();
         private Properties.Settings defaultSettings = Properties.Settings.Default;
-        private bool isFirstRun = true;
+        internal static bool IsFirstRun { get; set; } = true;
         private Guid zeroGuid = new Guid();
         internal static Guid BackgroundFilename { get; set; }
 
@@ -57,7 +57,7 @@ namespace  NotifyPersianCalendar
 
         private void SetIsFirstRun(bool @bool)
         {
-            isFirstRun = @bool;
+            IsFirstRun = @bool;
         }
 
         private void SetRunDate()
@@ -186,7 +186,7 @@ namespace  NotifyPersianCalendar
         {
             if (GetIsCalculateHijriAdjustmentOnlie() &&
                 (
-                    isFirstRun ||
+                    IsFirstRun ||
                     calendar.SelectedDateTime >= defaultSettings.RunDate.AddDays(1))
                 )
             {
