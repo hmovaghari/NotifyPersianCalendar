@@ -16,6 +16,7 @@ namespace  NotifyPersianCalendar
 {
     public partial class frmMain : Form
     {
+        internal static string OldBackgroundPath { get; set; }
         private Calendar calendar = new Calendar();
         private Properties.Settings defaultSettings = Properties.Settings.Default;
         private bool isFirstRun = true;
@@ -115,7 +116,11 @@ namespace  NotifyPersianCalendar
 
             gallery.ChangeDesktopBackground(backgroundPath, galleryFiles);
 
-            gallery.DeleteBackgroundFile(backgroundPath);
+            if (!string.IsNullOrEmpty(OldBackgroundPath))
+            {
+                gallery.DeleteBackgroundFile(OldBackgroundPath);
+            }
+            OldBackgroundPath = backgroundPath;
 
             CheckGalleryError(gallery);
         }
